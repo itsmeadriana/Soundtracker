@@ -4,23 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/css/web fonts/artographie/stylesheet.css" type="text/css" charset="utf-8" />
+    <title>Soundtracker Search Results</title>
 </head>
+<header>
+    <h1>
+        soundtracker
+    </h1>
+    
+    <navbar>
+        <form class="nav-search-bar">
+            <label for="movie-title-input">search for a movie:</label>
+            <input type="text" id="movie-title-input">
+            <button type="button" id="nav-search-btn">search</button>
+        </form>
+    </navbar>
+</header>
+
+
 <body>
+
 
     
 <!--Search form-->    
-<form>
-    <label for="movie-title-input">Search for a movie:</label>
-    <input type="text" id="movie-title-input">
-    <button type="button" id="submit-button">Search</button>
-</form>
-
+<section class="search-form">
+    <form class="search-form">
+        <label for="movie-title-input">Search for a movie:</label>
+        <input type="text" id="movie-title-input">
+        <button type="button" id="submit-button">Search</button>
+    </form>
+</section>
 
 <!--div for the movie list -->
-<div id="movie-list">
+<section class="return-results">
+    <div id="movie-list">
 
-</div>
+    </div>
+</section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
