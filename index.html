@@ -6,36 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/web fonts/artographie/stylesheet.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="assets/css/web fonts/art deco/stylesheet.css" type="text/css" charset="utf-8" />
     <title>Soundtracker Search Results</title>
 </head>
 <header>
     <h1>
         soundtracker
     </h1>
-    
-    <navbar>
-        <form class="nav-search-bar">
-            <label for="movie-title-input">search for a movie:</label>
-            <input type="text" id="movie-title-input">
-            <button type="button" id="nav-search-btn">search</button>
-        </form>
-    </navbar>
 </header>
 
+<navbar class="is-fixed-top">
+    <form class="nav-search-bar">
+        <label for="movie-title-input">search for a movie:</label>
+        <input type="text" id="movie-title-input">
+        <button type="button" id="submit-button"><strong>search</strong></button>
+    </form>
+    
+</navbar>
 
-<body>
-
-
+<body class="container">
+    <section class="return-results">
+        <h2 class="results-header">
+            search results
+        </h2>
+    </section>
     
 <!--Search form-->    
-<section class="search-form">
+<!-- <section class="search-form">
     <form class="search-form">
         <label for="movie-title-input">Search for a movie:</label>
         <input type="text" id="movie-title-input">
         <button type="button" id="submit-button">Search</button>
     </form>
-</section>
+</section> -->
 
 <!--div for the movie list -->
 <section class="return-results">
@@ -43,8 +46,10 @@
 
     </div>
 </section>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    
 </body>
+  
 </html>

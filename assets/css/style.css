@@ -6,25 +6,29 @@ color:root {
     --accent-color-5: #343759;
     --accent-color-6: #C89399;
     --accent-color-7: #8E6B6F;
-    --accent-color-8: #B2915E;
+    --accent-color-8: #;
 }
 
 
 header {
-    font-family: 'artographie', Arial, Helvetica, sans-serif;
+    font-family: 'poiret', Arial, Helvetica, sans-serif;
     display: flex;
     flex-wrap: nowrap;
-    margin-right: 10px;
-    background-color: #4c6f73;
-    color: #c99420;
+    /* margin-right: 10px; */
+    color: #CD9199;
+    border-radius: 5px;
+    border: 1px solid #c99420;
 }
 
 header h1 {
-    font-size: 300%;
-    text-align: right;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: space-around;
+    font-size: 14vw;
     margin-right: 10px;
-    border-radius: 1px;
     border-bottom: 0px;
+    border-radius: 3px;
     line-height: 25vw;
 }
 
@@ -32,24 +36,64 @@ navbar {
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
-    margin: 20px 10px 0px 0px;
-    /* margin-right: 10px; */
-    margin-left: 10px;
     background-color:#ffffff;
-    padding-left: 10px;
-    /* padding-right: 20px; */
-    padding-top: 10px;
-    border-radius: 3px;
-
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px;
+    justify-content: flex-end;
 }
 
 .nav-search-bar {
     text-align: right;
     border-radius:20px;
+    font-family: 'poiret',Arial, Helvetica, sans-serif;
+    color: #4c6f73;
+    font-weight: bold;
+    
 }
 
 .movie-title-input {
     display: flex;
     align-self: flex-end;
+}
 
+.submit-button {
+    border:#4C6f73 solid 1px;
+    border-radius: 3px;
+    font-family: 'poiret',Arial, Helvetica, sans-serif;
+    color: #4c6f73;
+    font-weight: bolder;
+    background-color: white;
+}
+
+.submit-button:active {
+    border: #4C6f73 3px solid;
+}
+
+body {
+    background-color: white;
+    font-family: 'poiret',Arial, Helvetica, sans-serif;
+    color: #4c6f73; ;
+}
+
+.results-header {
+    font-family: 'artographie',Arial, Helvetica, sans-serif;
+    color: #4c6f73;
+    padding: 10px;
+    border-bottom: 1px solid
+}
+
+.movie-list {
+    border-radius: var(--accent-color-4) 5px solid;
+    font-family: 'artographie', Arial, Helvetica, sans-serif;
+    color:var(--accent-color-3);
+}
+
+.result-img {
+    border-radius: 20px;
+}
+
+.moviePosterCard {
+    height: 30%;
+    width: 20%;
 }
