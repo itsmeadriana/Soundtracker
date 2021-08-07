@@ -46,6 +46,55 @@ generatePageElements = function(movieId) {
 
 
     // fetch the soundtrack information
+    fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+            "x-rapidapi-host": "imdb8.p.rapidapi.com"
+        }
+    })
+    .then(response => {
+        response.json()
+        .then(function(movieSoundtrack){
 
+            //loop function to cycle through soundtrack list and attach
+            for(var i=0; i<movieSoundtrack.soundtracks.length; i++) {
+                var trackNumber = i + 1;
+
+                var trackDiv = $("<div>")
+                .text(trackNumber + ". " +  movieSoundtrack.soundtracks[i].name);
+
+                var trackLinks = $("<ul>")
+                .attr("id", "LinksFor"+trackNumber);
+
+                $("#track-list").append(trackDiv,trackLinks);
+
+            }
+
+            //fill out links and info for first track and attach
+            $("#LinksFor1").html(
+            "<li>" + "Insert Lyrics Link Here" + "</li>" +
+            "<li>" + "Insert Video Link Here" + "</li>"
+            )
+        
+            var trackImg = $("<img>")
+            .width(171)
+            .height(228);
+
+            var trackInfo = $("<ul>")
+            .html(
+                "<li>"+ "track info" +"</li>" +
+                "<li>"+ "more track info" +"</li>" +
+                "<li>"+ "even more track info" +"</li>"
+            );
+            
+            $("#track-details").append(trackImg,trackInfo);
+
+
+        })
+    })
+    .catch(err => {
+        console.error(err);
+    });
 }
 getMovieId();
