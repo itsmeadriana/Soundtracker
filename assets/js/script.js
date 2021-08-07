@@ -26,19 +26,25 @@ createMovieList = function(movieTitle) {
                     
                     //checks for picture content and assigns source value
                     if(titleData.results[i].hasOwnProperty('image')){
-                        movieImgEl.attr("src",titleData.results[i].image.url)
+                        movieImgEl.attr("src",titleData.results[i].image.url);
                     } else {
-                        movieImgEl.attr("src","")
+                        movieImgEl.attr("src","");
                     }
                     
                     let movieDetails = $("<ul>")
                     .html( 
-                    "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-                    "<li> Release Date: " + titleData.results[i].year + "</li>")
+                    "<li> Title: " + titleData.results[i].title + "</li>" +
+                    "<li> Release Date: " + titleData.results[i].year + "</li>" +
+                    "<li> Type: " + titleData.results[i].titleType + "</li>"
+                    )
                     
+                    let linkToSoundtrack = $("<a>")
+                    .attr("href","./soundtrack.html?movie=" + titleData.results[i].id)
+                    .append(movieImgEl,movieDetails);
+
                     let movieContainerEl = $("<div>")
                     .addClass("")
-                    .append(movieImgEl,movieDetails)
+                    .append(linkToSoundtrack)
                     .attr("id",titleData.results[i].id);
 
                     $("#movie-list").append(movieContainerEl);
