@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+    </style>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Soundtracker</title>
 </head>
 <body>
-
-    
-<!--Search form-->    
-<form>
-    <label for="movie-title-input">Search for a movie:</label>
-    <input type="text" id="movie-title-input">
-    <button type="button" id="submit-button">Search</button>
-</form>
+    <section class="section is-medium">
+        <div class="columns">
+            <div class="column"></div>
+                <main class="column">
+                    <h1 class="title is-1">soundtracker</h1>
+                    <div class="box">
+                        <!--Search form-->    
+                        <form>
+                            <div class="field">
+                                <label class="label subtitle is-4" for="movie-title-input">Search for a movie:</label>
+                                <div class="control">
+                                    <input class="input is-primary is-large" type="text" id="movie-title-input" placeholder="e.g. Cinderella">
+                                </div>
+                            </div>
+                            <div class="control">
+                                <button class="button is-primary is-light is-medium" type="button" id="submit-button">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </main>
+            <div class="column"></div>
+        </div>
+    </section>
 
 
 <!--div for the movie list -->
