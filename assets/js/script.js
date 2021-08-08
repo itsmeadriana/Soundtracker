@@ -64,7 +64,7 @@ createMovieList = function(movieTitle) {
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+		"x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
 		"x-rapidapi-host": "imdb8.p.rapidapi.com"
 	}
     })
@@ -80,23 +80,32 @@ createMovieList = function(movieTitle) {
 
                 } else {
 
+                // creates div for search results
                 var resultsCard = document.createElement("div")
-                    resultsCard.className = "card moviePosterCard"
-
+                    resultsCard.className = "moviePosterCard card"
+                    // resultsCard.setAttribute("class","moviePosterCard card")
+                    
+                // creates div for card-image
                 var cardImage = document.createElement("div")
                     cardImage.className = "card-image"
-
+                    cardImage.setAttribute("class", "card-image")
+                    
+                
+                // creates figure element for image
                 var cardFigure = document.createElement("figure")
-                    cardFigure.className = "image"
-
+                    // cardFigure.className = "image"
+                    cardFigure.setAttribute("class","image")
+                    
+                
+                // creates img element for incoming image
                 var resultsImage = document.createElement("img")
                     resultsImage.setAttribute("alt","placeholder image");
 
-                    if(titleData.results[i].hasOwnProperty('image')){
-                        resultsImage.setAttribute("src",titleData.results[i].image.url)
-                    } else {
-                        resultsImage.setAttribute("src","")
-                    }
+                if(titleData.results[i].hasOwnProperty('image')){
+                    resultsImage.setAttribute("src",titleData.results[i].image.url)
+                } else {
+                    resultsImage.setAttribute("src","")
+                }
 
                 cardFigure.appendChild(resultsImage)
                 cardImage.appendChild(cardFigure)
@@ -104,26 +113,25 @@ createMovieList = function(movieTitle) {
                 console.log(resultsCard); 
 
                      
-                    let movieDetails = $("<ul>")
-                    .html( 
-                    "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-                    "<li> Release Date: " + titleData.results[i].year + "</li>")
-                    $("#movie-list").append(resultsCard, movieDetails)
+                let movieDetails = $("<ul>")
+                .html( 
+                "<li> Movie Title: " + titleData.results[i].title + "</li>" +
+                "<li> Release Date: " + titleData.results[i].year + "</li>")
+                $("#movie-list").append(resultsCard, movieDetails)
                 }
             }
-        })
-    
+        })   
     })
     .catch(err => {
         console.error(err);
-    });
-    
+    });    
 }
 
 $("#submit-button").on("click", function(){  
     let currentMovieTitle = $("#movie-title-input").val().trim();
+    console.log(currentMovieTitle);
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
 });
 
-createMovieList("Shrek");
+// createMovieList("Rocky");

@@ -14,9 +14,9 @@ header {
     font-family: 'poiret', Arial, Helvetica, sans-serif;
     display: flex;
     flex-wrap: nowrap;
-    /* margin-right: 10px; */
+    margin: 10px;
     color: #CD9199;
-    border-radius: 5px;
+    border-radius: 25px;
     border: 1px solid #c99420;
 }
 
@@ -28,28 +28,27 @@ header h1 {
     font-size: 14vw;
     margin-right: 10px;
     border-bottom: 0px;
-    border-radius: 3px;
+    border-radius: 5px;
     line-height: 25vw;
 }
 
 navbar {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 5px;
+    margin: 10px;
     background-color:#ffffff;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 25px;
     border: solid 1px;
     justify-content: flex-end;
 }
 
 .nav-search-bar {
     text-align: right;
-    border-radius:20px;
-    font-family: 'poiret',Arial, Helvetica, sans-serif;
+    font-family:"poiret" ,Arial, Helvetica, sans-serif;
     color: #4c6f73;
     font-weight: bold;
-    
+    font-size: 3.5vw;
 }
 
 .movie-title-input {
@@ -73,20 +72,24 @@ navbar {
 body {
     background-color: white;
     font-family: 'poiret',Arial, Helvetica, sans-serif;
-    color: #4c6f73; ;
+    color: #4c6f73;
 }
 
 .results-header {
     font-family: 'artographie',Arial, Helvetica, sans-serif;
     color: #4c6f73;
     padding: 10px;
-    border-bottom: 1px solid
+    border-bottom: 1px dashed #c99420;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px ;
+    font-size: 4vw;
 }
 
 .movie-list {
     border-radius: var(--accent-color-4) 5px solid;
     font-family: 'artographie', Arial, Helvetica, sans-serif;
     color:var(--accent-color-3);
+    
 }
 
 .result-img {
@@ -94,6 +97,8 @@ body {
 }
 
 .moviePosterCard {
+    padding: 10px;
+    margin: 10px;
     height: 30%;
     width: 20%;
 }
