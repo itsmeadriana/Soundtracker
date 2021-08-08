@@ -90,7 +90,6 @@ createMovieList = function(movieTitle) {
                     cardFigure.className = "image"
 
                 var resultsImage = document.createElement("img")
-                // resultsImage.className = "moviePosterCard"
                     resultsImage.setAttribute("alt","placeholder image");
 
                     if(titleData.results[i].hasOwnProperty('image')){
@@ -103,34 +102,13 @@ createMovieList = function(movieTitle) {
                 cardImage.appendChild(cardFigure)
                 resultsCard.appendChild(cardImage)
                 console.log(resultsCard); 
-                $("#movie-list").append(resultsCard);
 
-                    // Create the elements for the verified movie
-                    // let movieImgEl = $("<img>")
-                    // .width(225)
-                    // .height(300)
-                    // .addClass("result-img")
-                    // .addClass("card-image")
-                    
-
-                    // //checks for picture content and assigns source value
-                    // if(titleData.results[i].hasOwnProperty('image')){
-                    //     movieImgEl.attr("src",titleData.results[i].image.url)
-                    // } else {
-                    //     movieImgEl.attr("src","")
-                    // }
-                    
-                    // let movieDetails = $("<ul>")
-                    // .html( 
-                    // "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-                    // "<li> Release Date: " + titleData.results[i].year + "</li>")
-                    
-                    // let movieContainerEl = $("<div>")
-                    // .addClass("")
-                    // .append(movieImgEl,movieDetails)
-                    // .attr("id",titleData.results[i].id);
-
-                    // $("#movie-list").append(movieContainerEl);
+                     
+                    let movieDetails = $("<ul>")
+                    .html( 
+                    "<li> Movie Title: " + titleData.results[i].title + "</li>" +
+                    "<li> Release Date: " + titleData.results[i].year + "</li>")
+                    $("#movie-list").append(resultsCard, movieDetails)
                 }
             }
         })
@@ -143,9 +121,9 @@ createMovieList = function(movieTitle) {
 }
 
 $("#submit-button").on("click", function(){  
-
-
     let currentMovieTitle = $("#movie-title-input").val().trim();
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
 });
+
+createMovieList("Shrek");
