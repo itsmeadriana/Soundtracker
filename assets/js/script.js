@@ -79,11 +79,14 @@ createMovieList = function(movieTitle) {
                 if(titleData.results[i].hasOwnProperty('name')){
 
                 } else {
+                
+                var cardWrapper = document.createElement("div")
+                    cardWrapper.className = "card-wrapper"
 
                 // creates div for search results
                 var resultsCard = document.createElement("div")
                     resultsCard.className = "moviePosterCard card"
-                    // resultsCard.setAttribute("class","moviePosterCard card")
+                    resultsCard.setAttribute("class","moviePosterCard card")
                     
                 // creates div for card-image
                 var cardImage = document.createElement("div")
@@ -95,29 +98,50 @@ createMovieList = function(movieTitle) {
                 var cardFigure = document.createElement("figure")
                     // cardFigure.className = "image"
                     cardFigure.setAttribute("class","image")
-                    
-                
+                            
                 // creates img element for incoming image
                 var resultsImage = document.createElement("img")
                     resultsImage.setAttribute("alt","placeholder image");
+                
+                // 
+                var movieDetailsEl = document.createElement("div")
+                    movieDetailsEl.className = "movieDetailsCard card";
+
+                var movieDetailsCard = document.createElement("div")
+                    movieDetailsCard.className = "card-content"
+
+                var movieDetailsContent = document.createElement("div")
+                    movieDetailsContent.className = "content";
 
                 if(titleData.results[i].hasOwnProperty('image')){
                     resultsImage.setAttribute("src",titleData.results[i].image.url)
                 } else {
                     resultsImage.setAttribute("src","")
                 }
-
+            
                 cardFigure.appendChild(resultsImage)
                 cardImage.appendChild(cardFigure)
                 resultsCard.appendChild(cardImage)
-                console.log(resultsCard); 
 
-                     
+                movieDetailsCard.appendChild(movieDetailsContent)
+                movieDetailsEl.appendChild(movieDetailsCard);
+                cardWrapper.append(movieDetailsEl)
+
+                
+                console.log(cardWrapper)
+
                 let movieDetails = $("<ul>")
                 .html( 
                 "<li> Movie Title: " + titleData.results[i].title + "</li>" +
                 "<li> Release Date: " + titleData.results[i].year + "</li>")
-                $("#movie-list").append(resultsCard, movieDetails)
+                 
+                // $("#details-card").append(movieDetails)
+                // movieDetails.i = ("<div class='content'")
+
+                cardWrapper.append(resultsCard)
+                cardWrapper.append(movieDetails)
+                
+                $("#movie-list").append(cardWrapper)
                 }
             }
         })   
@@ -132,6 +156,8 @@ $("#submit-button").on("click", function(){
     console.log(currentMovieTitle);
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
-});
+}
+
+);
 
 // createMovieList("Rocky");
