@@ -1,64 +1,3 @@
-// createMovieList = function(movieTitle) {
-//     //fetch movie info using the IMDb title/find
-//     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
-// 		"x-rapidapi-host": "imdb8.p.rapidapi.com"
-// 	}
-//     })
-//     .then(response => {
-//         response.json()
-//         .then(function(titleData){
-
-//             //For loop to cycle through the movie results
-//             for (var i=0; i < titleData.results.length; i++){
-
-//                 //checks to see if it has a name property, which indicates NOT a movie, so do nothing
-//                 if(titleData.results[i].hasOwnProperty('name')){
-
-//                 } else {
-//                     // Create the elements for the verified movie
-//                     let movieImgEl = $("<img>")
-//                     .width(225)
-//                     .height(300)
-//                     .addClass("")
-
-//                     //checks for picture content and assigns source value
-//                     if(titleData.results[i].hasOwnProperty('image')){
-//                         movieImgEl.attr("src",titleData.results[i].image.url)
-//                     } else {
-//                         movieImgEl.attr("src","")
-//                     }
-
-//                     let movieDetails = $("<ul>")
-//                     .html( 
-//                     "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-//                     "<li> Release Date: " + titleData.results[i].year + "</li>")
-
-//                     let movieContainerEl = $("<div>")
-//                     .addClass("")
-//                     .append(movieImgEl,movieDetails)
-//                     .attr("id",titleData.results[i].id);
-
-//                     $("#movie-list").append(movieContainerEl);
-//                 }
-//             }
-//         })
-
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     });
-
-// }
-
-// $("#submit-button").on("click", function(){
-//     let currentMovieTitle = $("#movie-title-input").val().trim();
-//     createMovieList(currentMovieTitle);
-//     $("#movie-title-input").val("");
-// });
-
 createMovieList = function (movieTitle) {
     //fetch movie info using the IMDb title/find
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
@@ -83,8 +22,8 @@ createMovieList = function (movieTitle) {
 
 
                             console.log("building html")
-                            var returnResults = document.createElement("div")
-                            returnResults.className = "return-results is-flex-direction-row"
+                            var returnResults = document.createElement("section")
+                            returnResults.className = "return-results box list"
 
                             var cardWrapper = document.createElement("div")
                             cardWrapper.className = "card-wrapper box"
@@ -98,10 +37,10 @@ createMovieList = function (movieTitle) {
                             cardImage.className = "card-image is-flex-shrink-0"
 
                             var figure = document.createElement("figure")
-                            figure.className = "figure is-2by4"
+                            figure.className = "figure"
 
                             var actualImage = document.createElement("img")
-                            actualImage.className = " is-2by4"
+                            actualImage.className = "image is-2by4"
                             actualImage.setAttribute("src", "")
 
                             var noImage = document.createElement("div")
@@ -115,13 +54,37 @@ createMovieList = function (movieTitle) {
                                 imageNotAvailable = true
                             }
 
+                            var toSoundtrack = document.createElement("button")
+                            toSoundtrack.innerHTML = "Soundtrack";
+                            toSoundtrack.addEventListener("click", function(){
+                                location.href = "../soundtrack-index.html"
+                            })
+                            
+
+                            
+                            
+                            
+                            // document.body.appendChild(toSoundtrack);
+
                             var cardContent = document.createElement("div")
                             cardContent.className = "card-content"
                             cardContent.setAttribute("id", "details-card")
 
+                            cardContent.appendChild(toSoundtrack)
+
+                            // 
+
+                            // var cardFooterItem = createElement("button")
+                            // cardFooterItem.className = "card-footer-item"
+                            // cardFooterItem.setAttribute("src", "")
+
+                            // footer.append(cardFooterItem)
+                            // cardContent.append(footer)
+
                             cardContent.innerHTML = "<h4>" + titleData.results[i].title 
                             + "</h4><h5>" +  titleData.results[i].year + "</h5>"
-
+                
+                            
                             if (imageNotAvailable === true) {
                                 figure.append(noImage)
                             } else {
@@ -133,21 +96,7 @@ createMovieList = function (movieTitle) {
                             cardWrapper.append(resultsCard, cardContent)
                             console.log(cardWrapper)
 
-
-
-
-
-
-
-
-
-
-                            // let movieDetails = $("<ul>")
-                            //     .html(
-                            //         "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-                            //         "<li> Release Date: " + titleData.results[i].year + "</li>")
-
-                            $(".return-results").append(cardWrapper)
+                            $(".return-results").append(cardWrapper, toSoundtrack)
                         }
                     }
                 })
@@ -159,11 +108,9 @@ createMovieList = function (movieTitle) {
 
 $("#submit-button").on("click", function () {
     let currentMovieTitle = $("#movie-title-input").val().trim();
-    console.log(currentMovieTitle);
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
 }
-
 );
 
 createMovieList("Moana");
