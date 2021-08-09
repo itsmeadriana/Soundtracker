@@ -83,27 +83,29 @@ createMovieList = function (movieTitle) {
 
 
                             console.log("building html")
-                            var returnResults = document.createElement("section")
-                            returnResults.className = "return-results"
+                            var returnResults = document.createElement("div")
+                            returnResults.className = "return-results is-flex-direction-row"
 
                             var cardWrapper = document.createElement("div")
-                            cardWrapper.className = "card-wrapper notification padding"
+                            cardWrapper.className = "card-wrapper box"
+                            cardWrapper.setAttribute("id", "wrap")
 
                             var resultsCard = document.createElement("div")
-                            resultsCard.className = "card"
+                            resultsCard.className = "image-container"
                             resultsCard.setAttribute("id", "results-card")
 
                             var cardImage = document.createElement("div")
-                            cardImage.className = "card-image"
+                            cardImage.className = "card-image is-flex-shrink-0"
 
                             var figure = document.createElement("figure")
-                            figure.className = "image is-2by3"
+                            figure.className = "figure is-2by4"
 
                             var actualImage = document.createElement("img")
+                            actualImage.className = " is-2by4"
                             actualImage.setAttribute("src", "")
 
                             var noImage = document.createElement("div")
-                            noImage.className = "notification missing-movie-poster-placeholder"
+                            noImage.className = "missing-movie-poster-placeholder"
 
                             var imageNotAvailable = false
 
@@ -164,4 +166,4 @@ $("#submit-button").on("click", function () {
 
 );
 
-// createMovieList("Rocky");
+createMovieList("Moana");
