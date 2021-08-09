@@ -3,7 +3,7 @@ createMovieList = function(movieTitle) {
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+		"x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
 		"x-rapidapi-host": "imdb8.p.rapidapi.com"
 	}
     })

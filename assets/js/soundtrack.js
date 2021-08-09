@@ -1,10 +1,11 @@
+let movieId = "";
+
 //retrieve IMDb code from url query string
 var getMovieId = function () {
   var queryString = document.location.search;
   var tempSplit = queryString.split("=")[1];
-  var movieId = tempSplit.split("/")[2];
+  movieId = tempSplit.split("/")[2];
   generatePageElements(movieId);
-
 };
 
 generatePageElements = function(movieId) {
@@ -12,7 +13,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-details?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -49,7 +50,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -62,28 +63,33 @@ generatePageElements = function(movieId) {
                 var trackNumber = i + 1;
 
                 var trackDiv = $("<div>")
+                .addClass("clickText")
                 .text(trackNumber + ". " +  movieSoundtrack.soundtracks[i].name);
 
                 var trackLinks = $("<ul>")
-                .attr("id", "LinksFor"+trackNumber);
+                .addClass("clickLink")
+                .attr("id", "LinksFor"+trackNumber)
+                .html("");
 
                 $("#track-list").append(trackDiv,trackLinks);
 
             }
 
-            //fill out links and info for first track and attach
+            //fetch the information for lyrics and videos
+            //fill out links for track 1
             $("#LinksFor1").html(
             "<li>" + "Insert Lyrics Link Here" + "</li>" +
             "<li>" + "Insert Video Link Here" + "</li>"
             )
-        
+   
+            //Generate track 1 image and info and append to div
             var trackImg = $("<img>")
             .width(171)
             .height(228);
 
             var trackInfo = $("<ul>")
             .html(
-                "<li>"+ "track info" +"</li>" +
+                "<li>"+ "track 1 info" +"</li>" +
                 "<li>"+ "more track info" +"</li>" +
                 "<li>"+ "even more track info" +"</li>"
             );
@@ -97,4 +103,62 @@ generatePageElements = function(movieId) {
         console.error(err);
     });
 }
+
+// This is what happens when you click on the Track title
+$("#track-list").on("click",".clickText", function(event){
+    event.preventDefault();
+    let currentTextDiv = $(this);
+
+    //fetch soundtrack info
+    fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+            "x-rapidapi-host": "imdb8.p.rapidapi.com"
+        }
+    })
+    .then(response => {
+        response.json()
+        .then(function(movieSoundtrack){
+            
+
+            $(this).css("color","purple");
+            //first fix the links
+            //empty out all the link divs
+            for (i = 0; i<movieSoundtrack.soundtracks.length; i++) {
+                let tempDiv = "#LinksFor" + (i+1);
+                $(tempDiv).html("");
+            }
+            
+            //fill the links out
+            currentTextDiv
+            .next(".clickLink")
+            .html(
+                "<li>" + "Insert Lyrics Link Here" + "</li>" +
+                "<li>" + "Insert Video Link Here" + "</li>"
+            );
+
+            //second part fixes the track information
+            //empty out track information
+            $("#track-details").html("");
+            //fill in track information of clicked
+            var trackImg = $("<img>")
+                    .width(171)
+                    .height(228);
+
+            var trackInfo = $("<ul>")
+            .html(
+                "<li>"+ "track info" +"</li>" +
+                "<li>"+ "more trackededed info" +"</li>" +
+                "<li>"+ "even more track info" +"</li>"
+            );
+            
+            $("#track-details").append(trackImg,trackInfo);
+
+        })
+    })
+});
+
+
+//calls function to retrieve ID and then starts page generator
 getMovieId();
