@@ -23,19 +23,19 @@
 //                     .width(225)
 //                     .height(300)
 //                     .addClass("")
-                    
+
 //                     //checks for picture content and assigns source value
 //                     if(titleData.results[i].hasOwnProperty('image')){
 //                         movieImgEl.attr("src",titleData.results[i].image.url)
 //                     } else {
 //                         movieImgEl.attr("src","")
 //                     }
-                    
+
 //                     let movieDetails = $("<ul>")
 //                     .html( 
 //                     "<li> Movie Title: " + titleData.results[i].title + "</li>" +
 //                     "<li> Release Date: " + titleData.results[i].year + "</li>")
-                    
+
 //                     let movieContainerEl = $("<div>")
 //                     .addClass("")
 //                     .append(movieImgEl,movieDetails)
@@ -45,12 +45,12 @@
 //                 }
 //             }
 //         })
-    
+
 //     })
 //     .catch(err => {
 //         console.error(err);
 //     });
-    
+
 // }
 
 // $("#submit-button").on("click", function(){
@@ -59,99 +59,103 @@
 //     $("#movie-title-input").val("");
 // });
 
-createMovieList = function(movieTitle) {
+createMovieList = function (movieTitle) {
     //fetch movie info using the IMDb title/find
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
-		"x-rapidapi-host": "imdb8.p.rapidapi.com"
-	}
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+            "x-rapidapi-host": "imdb8.p.rapidapi.com"
+        }
     })
-    .then(response => {
-        response.json()
-        .then(function(titleData){
+        .then(response => {
+            response.json()
+                .then(function (titleData) {
+                    console.log("searching")
+                    //For loop to cycle through the movie results
+                    for (var i = 0; i < titleData.results.length; i++) {
+                        //checks to see if it has a name property, which indicates NOT a movie, so do nothing
+                        console.log(titleData.results[i])
 
-            //For loop to cycle through the movie results
-            for (var i=0; i < titleData.results.length; i++){
+                        if (titleData.results[i].hasOwnProperty('name')) {
 
-                //checks to see if it has a name property, which indicates NOT a movie, so do nothing
-                if(titleData.results[i].hasOwnProperty('name')){
+                        } else {
 
-                } else {
-                
-                var cardWrapper = document.createElement("div")
-                    cardWrapper.className = "card-wrapper"
 
-                // creates div for search results
-                var resultsCard = document.createElement("div")
-                    resultsCard.className = "moviePosterCard card"
-                    resultsCard.setAttribute("class","moviePosterCard card")
-                    
-                // creates div for card-image
-                var cardImage = document.createElement("div")
-                    cardImage.className = "card-image"
-                    cardImage.setAttribute("class", "card-image")
-                    
-                
-                // creates figure element for image
-                var cardFigure = document.createElement("figure")
-                    // cardFigure.className = "image"
-                    cardFigure.setAttribute("class","image")
-                            
-                // creates img element for incoming image
-                var resultsImage = document.createElement("img")
-                    resultsImage.setAttribute("alt","placeholder image");
-                
-                // 
-                var movieDetailsEl = document.createElement("div")
-                    movieDetailsEl.className = "movieDetailsCard card";
+                            console.log("building html")
+                            var returnResults = document.createElement("section")
+                            returnResults.className = "return-results"
 
-                var movieDetailsCard = document.createElement("div")
-                    movieDetailsCard.className = "card-content"
+                            var cardWrapper = document.createElement("div")
+                            cardWrapper.className = "card-wrapper notification padding"
 
-                var movieDetailsContent = document.createElement("div")
-                    movieDetailsContent.className = "content";
+                            var resultsCard = document.createElement("div")
+                            resultsCard.className = "card"
+                            resultsCard.setAttribute("id", "results-card")
 
-                if(titleData.results[i].hasOwnProperty('image')){
-                    resultsImage.setAttribute("src",titleData.results[i].image.url)
-                } else {
-                    resultsImage.setAttribute("src","")
-                }
-            
-                cardFigure.appendChild(resultsImage)
-                cardImage.appendChild(cardFigure)
-                resultsCard.appendChild(cardImage)
+                            var cardImage = document.createElement("div")
+                            cardImage.className = "card-image"
 
-                movieDetailsCard.appendChild(movieDetailsContent)
-                movieDetailsEl.appendChild(movieDetailsCard);
-                cardWrapper.append(movieDetailsEl)
+                            var figure = document.createElement("figure")
+                            figure.className = "image is-2by3"
 
-                
-                console.log(cardWrapper)
+                            var actualImage = document.createElement("img")
+                            actualImage.setAttribute("src", "")
 
-                let movieDetails = $("<ul>")
-                .html( 
-                "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-                "<li> Release Date: " + titleData.results[i].year + "</li>")
-                 
-                // $("#details-card").append(movieDetails)
-                // movieDetails.i = ("<div class='content'")
+                            var noImage = document.createElement("div")
+                            noImage.className = "notification missing-movie-poster-placeholder"
 
-                cardWrapper.append(resultsCard)
-                cardWrapper.append(movieDetails)
-                
-                $("#movie-list").append(cardWrapper)
-                }
-            }
-        })   
-    })
-    .catch(err => {
-        console.error(err);
-    });    
+                            var imageNotAvailable = false
+
+                            if (titleData.results[i].hasOwnProperty('image')) {
+                                actualImage.setAttribute("src", titleData.results[i].image.url)
+                            } else {
+                                imageNotAvailable = true
+                            }
+
+                            var cardContent = document.createElement("div")
+                            cardContent.className = "card-content"
+                            cardContent.setAttribute("id", "details-card")
+
+                            cardContent.innerHTML = "<h4>" + titleData.results[i].title 
+                            + "</h4><h5>" +  titleData.results[i].year + "</h5>"
+
+                            if (imageNotAvailable === true) {
+                                figure.append(noImage)
+                            } else {
+                               figure.append(actualImage)
+                            }
+
+                            cardImage.append(figure)
+                            resultsCard.append(cardImage)
+                            cardWrapper.append(resultsCard, cardContent)
+                            console.log(cardWrapper)
+
+
+
+
+
+
+
+
+
+
+                            // let movieDetails = $("<ul>")
+                            //     .html(
+                            //         "<li> Movie Title: " + titleData.results[i].title + "</li>" +
+                            //         "<li> Release Date: " + titleData.results[i].year + "</li>")
+
+                            $(".return-results").append(cardWrapper)
+                        }
+                    }
+                })
+        })
+        .catch(err => {
+            console.error(err);
+        });
 }
 
-$("#submit-button").on("click", function(){  
+$("#submit-button").on("click", function () {
     let currentMovieTitle = $("#movie-title-input").val().trim();
     console.log(currentMovieTitle);
     createMovieList(currentMovieTitle);

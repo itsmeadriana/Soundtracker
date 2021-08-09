@@ -100,20 +100,19 @@ body {
     border-radius: 20px;
 }
 
+.card-wrapper {
+    width: 20vw;
+}
 
 #results-card {
-    display: inline;
-    background-color:yellow; 
-    width: 20%;
-    height: auto;
-
+    /* display: inline; */
 }
 
 .card-image {
     /* padding: 10px; */
     /* margin: 10px; */
     height: auto;
-    /* width: 20%; */
+    width: 100%;
 }
 
 .card-wrapper {
@@ -144,10 +143,11 @@ body {
 }
 
 .card-content, #details-card {
-    border: 1px solid;
     padding: 4pt;
     margin:0;
     background-color:white;
+    text-align: center;
+    font-family: 'poiret', Arial, Helvetica, sans-serif;
 }
 
 .card-content > h4 {
@@ -184,4 +184,10 @@ body {
 
 .pink {
     background-color: hotpink;
+}
+
+.missing-movie-poster-placeholder {
+    background-color: yellow;
+    height: 300px;
+    width: 200px;
 }
