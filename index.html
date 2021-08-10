@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="assets/css/web fonts/art deco/stylesheet.css" type="text/css" charset="utf-8" />
+    <title>Soundtracker Search Results</title>
+</head>
+<header>
+    <h1>
+        soundtracker
+    </h1>
+</header>
+
+<navbar class="is-fixed-top">
+    <!-- search bar form -->
+    <form class="nav-search-bar">
+        <label for="movie-title-input">search for a movie:</label>
+        <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
+        <button type="button" id="submit-button">search</button>
+    </form>
+</navbar>
+
+<body class="container">
+    <!-- section for "search results" heading -->
+    <section class="search-results">
+        <h2 id="results-header">
+            search results
+        </h2>
+    </section>
+
+    <!--section for the movie list -->
+    <section class="return-results" id="list">
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+</body>
+<footer class="is-fixed-bottom">
+    <section>
+        <h6 >&copy Copyright Soundtracker 2021</h6>
+        <br>
+        <h6>Made with love by the Soundtracker Team</h6>
+    </section>
+</footer>
+</html>
