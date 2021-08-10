@@ -3,7 +3,7 @@ createMovieList = function (movieTitle) {
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+            "x-rapidapi-key": "26912c0d0bmsh1a9a0bf389afa2bp184927jsnfe71f43ae2f4",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -20,19 +20,37 @@ createMovieList = function (movieTitle) {
                         for (var i = 0; i < titleData.results.length; i++) {
 
                             //checks to see if it has a name property, which indicates NOT a movie, so do nothing
-                            console.log(titleData.results[i])
+                            // console.log(titleData.results[i])
 
                             if (titleData.results[i].hasOwnProperty('name')) {
 
                             } else {
                                 // Create the elements for the verified movie
+                                //
+                                // var movieImgEl = document.createElement("img")
+                                // movieImgEl.className = "image is-2by4"
+            
+                                // movieImgEl.setAttribute("src", "")
+
+
                                 let movieImgEl = $("<img>")
                                     .width(225)
                                     .height(300)
-                                    .addClass("")
+                                    .addClass("actual-image card")
+                                    .attr("src", "")
 
+                                // movieImgEl = document.createElement("img")
+                                // movieImgEl.className = "image is-2by4"
+                                // movieImgEl.setAttribute("src", "")
 
-                                console.log("building html")
+                                if (titleData.results[i].hasOwnProperty('image')) {
+                                    movieImgEl.attr("src", titleData.results[i].image.url);
+                                } else {
+                                    imageNotAvailable = true
+                                    movieImgEl.attr("src", "");
+                                }
+
+                                // console.log("building html")
                                 var returnResults = document.createElement("section")
                                 returnResults.className = "return-results box list"
 
@@ -47,12 +65,12 @@ createMovieList = function (movieTitle) {
                                 var cardImage = document.createElement("div")
                                 cardImage.className = "card-image is-flex-shrink-0"
 
-                                var figure = document.createElement("figure")
-                                figure.className = "figure"
+                                // var figure = document.createElement("figure")
+                                // figure.className = "figure"
 
-                                var actualImage = document.createElement("img")
-                                actualImage.className = "image is-2by4"
-                                actualImage.setAttribute("src", "")
+                                // var movieImgEl = document.createElement("img")
+                                // movieImgEl.className = "image is-2by4"
+                                // movieImgEl.setAttribute("src", "")
 
                                 var noImage = document.createElement("div")
                                 noImage.className = "missing-movie-poster-placeholder"
@@ -69,7 +87,7 @@ createMovieList = function (movieTitle) {
                                 var toSoundtrack = document.createElement("button")
                                 toSoundtrack.innerHTML = "Soundtrack";
                                 toSoundtrack.addEventListener("click", function () {
-                                    location.href = "../soundtrack-index.html"
+                                    location.href = "./soundtrack-index.html"
                                 })
 
                                 let movieDetails = $("<ul>").html(
@@ -79,11 +97,11 @@ createMovieList = function (movieTitle) {
                                 )
 
                                 let linkToSoundtrack = $("<a>")
-                                    .attr("href", "./soundtrack.html?movie=" + titleData.results[i].id)
+                                    .attr("href", "./soundtrack-index.html?movie=" + titleData.results[i].id)
                                     .append(movieImgEl, movieDetails);
 
                                 let movieContainerEl = $("<div>")
-                                    .addClass("")
+                                    .addClass("card")
                                     .append(linkToSoundtrack)
                                     .attr("id", titleData.results[i].id);
                                 $("#movie-list").append(movieContainerEl);
@@ -111,26 +129,33 @@ createMovieList = function (movieTitle) {
                                     + "</h4><h5>" + titleData.results[i].year + "</h5>"
 
 
-                                if (imageNotAvailable === true) {
-                                    figure.append(noImage)
-                                } else {
-                                    figure.append(actualImage)
-                                }
+                                // .replace("&lt;", "<").replace("&gt;", ">")
+                                // var imageHTML = movieImgEl.prop('outerHTML')
+                                // figure.append(imageHTML)
+                                // console.log("poster: " + imageHTML)
 
-                                cardImage.append(figure)
+                                // if (imageNotAvailable === true) {
+                                //     figure.append(noImage)
+                                // } else {
+                                //     figure.append(movieImgEl)
+                                // }
+
+                                
+                                // cardImage.appendTo(figure)
                                 resultsCard.append(cardImage)
                                 cardWrapper.append(resultsCard, cardContent)
-                                console.log(cardWrapper)
+                                // console.log(cardWrapper)
 
-                                $(".return-results").append(cardWrapper, toSoundtrack)
+                                $(".return-results").append(cardWrapper, linkToSoundtrack)
+                                // toSoundtrack)
                             }
                         }
                     }
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         })
-        .catch(err => {
-            console.error(err);
-        });
-    })  
 }
 
 $("#submit-button").on("click", function () {

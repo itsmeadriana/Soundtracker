@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,53 +10,219 @@
     <link rel="stylesheet" href="assets/css/web fonts/art deco/stylesheet.css" type="text/css" charset="utf-8" />
     <title>Soundtrack</title>
 </head>
+
 <body>
     <header>
         <h1>
             soundtracker
         </h1>
     </header>
-    
+
     <navbar class="is-fixed-top">
         <form class="nav-search-bar">
             <label for="movie-title-input">search for a movie:</label>
             <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
             <button type="button" id="submit-button"><strong>search</strong></button>
-        </form>  
+        </form>
     </navbar>
 
-    <section class="soundtrack-results">
-       <div class="title">
-        <h3>
-            "soundtrack title"
+    <div class="title">
+        <h3 class="page-heading">
+            Saturday Night Fever
         </h3>
-       </div>
+    </div>
+    <section class="columns soundtrack-results">
+        <div class="column is-one-quarter">
+            <div class="soundtrack-display card">
+                <div class=" soundtrack-album-cover">
+                    <div class="image is-square">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/81DJbxqgq2L._SL1425_.jpg"
+                            class="padding is-flex-direction-column" />
+                    </div>
+                </div>
+                <h5 class="card-content is-flex is-justify-content-center">
+                    Saturday Night Fever
+                    <br>
+                    1977
+                </h5>
+            </div>
 
-       <article class="album-cover">
-           <h4>album cover</h4>
-            <img src=""/>
-       </article>
+        </div>
 
-       <article class="track-list">
-           <!-- might actually be a component element -->
-       </article>
+        <div class="column track-list">
+            <h4>
+                Track List
+            </h4>
+            <section class="track-accordion">
+                <!--  -->
 
-       <section class="track-info">
-           <h4>
-               "title"
-           </h4>
-           <img src=""/>
-           <div class="info-text">
-               <p>
-                   some words about whatever we've just clicked on...
-               </p>
-           </div>
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <link rel="stylesheet" href="/resources/demos/style.css">
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                <script>
+                    $(function () {
+                        $("#accordion").accordion();
+                    });
+                </script>
 
-       </section>
+                <section id="accordion">
+                    <h3>Track 1</h3>
+                    <div>
+                        <div class="track-details">
+                            "Stayin' Alive"<br>
+                            by Bee Gees
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="https://www.azlyrics.com/lyrics/beegees/stayinalive.html">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 2</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 3</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 4</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 5</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 6</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 7</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 8</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 9</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                    <h3>Track 10</h3>
+                    <div>
+                        <div class="track-details">
+                            "Track Title"<br>
+                            Artist Name
+                        </div>
+                        <br>
+                        <div class="track-links">
+                            <a href="">Lyrics</a>
+                            <br>
+                            <a href="">Music</a>
+                        </div>
+                    </div>
+                </section>
+        </div>
 
+        <div class="column track-info">
+            <div class="track-info-container">
+                <h4>
+                    "Stayin' Alive"
+                </h4>
+                <div class="embedded-video box">
+                    <iframe width="420" height="236.25" src="https://www.youtube.com/embed/aZ5fQyiZgns"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="info-text box">
+                    <p>
+                        some words about whatever we've just clicked on...
+                    </p>
+                </div>
+            </div>
+
+        </div>
     </section>
-  
-    <script src="./assets/js/soundtrack-script.js"/>
-    
+
+    <script src="./assets/js/soundtrack-script.js" />
+
 </body>
+
 </html>
