@@ -1,6 +1,6 @@
 // [insert soundtrack api fetch thingy here]
 let movieId = "";
-
+const lyricUrl = 'https://api.happi.dev/v1/music'
 //retrieve IMDb code from url query string
 var getMovieId = function () {
   var queryString = document.location.search;
@@ -96,9 +96,36 @@ generatePageElements = function(movieId) {
             );
             
             $("#track-details").append(trackImg,trackInfo);
-
-
-        })
+            
+            //Lyric fetch function
+            var artistLyrics = movieSoundtrack.soundtracks[i].products[0].artist;
+            var titleLyrics = movieSoundtrack.soundtracks[i].name;
+                fetch(`${lyricUrl}?q=${titleLyrics}&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&type=${artistLyrics}&lyrics=1`)
+                    .then(response => {
+                        console.log(response);
+                        return response.json();
+                    })
+                    .then(responseJSON => {
+                        console.log(responseJSON);
+                        const trackId = responseJSON.result[0].id_track;
+                        const albumId = responseJSON.result[0].id_album;
+                        const artistId = responseJSON.result[0].id_artist;
+                        console.log(trackId);
+                        console.log(albumId);
+                        console.log(artistId);
+                        
+                        fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
+                            .then(response => {
+                                console.log(response)
+                                return response.json();
+                            })
+                            .then(responseJSON => {
+                                console.log(responseJSON);
+                                const songLyrics = responseJSON.result.lyrics;
+                                console.log(songLyrics);
+                            })
+                            
+                    })   
     })
     .catch(err => {
         console.error(err);
