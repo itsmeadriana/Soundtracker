@@ -43,26 +43,26 @@ createMovieList = function(movieTitle) {
                         )
                         .addClass("list")
                         
-                        let cardImage = $("div")
+                        let cardImage = $("<div>")
                         // .addClass("card-image is-flex-shrink-0")
                         .append(movieImgEl);
 
-                        let cardContent = $("div")
+                        let cardContent = $("<div>")
                         .addClass("card-content")
                         .append(movieDetails);
                                      
-                        let resultsCard = $("div")
+                        let resultsCard = $("<div>")
                         .addClass("card")
                         .append(cardImage, cardContent);
 
                         let linkToSoundtrack = $("<a>")
-                        .addClass("is-clickable")
+                        .addClass("")
                         .attr("href","./soundtrack.html?movie=" + titleData.results[i].id)
                         .append(resultsCard);
 
                         let movieContainerEl = $("<div>")
                         .addClass("section")
-                        .append(resultsCard, linkToSoundtrack)
+                        .append(linkToSoundtrack)
                         .attr("id",titleData.results[i].id);
 
                         $(".return-results").append(movieContainerEl);
@@ -80,8 +80,10 @@ createMovieList = function(movieTitle) {
 
 $("#submit-button").on("click", function(){
     let currentMovieTitle = $("#movie-title-input").val().trim();    
-    createMovieList(currentMovieTitle)
+    $("#movie-list").html("");
+    createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");  
+    
 });
 
 // createMovieList("Moana");
