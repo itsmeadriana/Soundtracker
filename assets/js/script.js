@@ -3,7 +3,7 @@ createMovieList = function(movieTitle) {
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+		"x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
 		"x-rapidapi-host": "imdb8.p.rapidapi.com"
 	}
     })
@@ -11,37 +11,48 @@ createMovieList = function(movieTitle) {
         response.json()
         .then(function(titleData){
 
-            //For loop to cycle through the movie results
-            for (var i=0; i < titleData.results.length; i++){
+            //Typing gibberish or nothing will return error modal
+            if(!titleData.results) {
+                console.log("modal error here");
+            } else{
+                //For loop to cycle through the movie results
+                for (var i=0; i < titleData.results.length; i++){
 
-                //checks to see if it has a name property, which indicates NOT a movie, so do nothing
-                if(titleData.results[i].hasOwnProperty('name')){
+                    //checks to see if it has a name property, which indicates NOT a movie, so do nothing
+                    if(titleData.results[i].hasOwnProperty('name')){
 
-                } else {
-                    // Create the elements for the verified movie
-                    let movieImgEl = $("<img>")
-                    .width(225)
-                    .height(300)
-                    .addClass("")
-                    
-                    //checks for picture content and assigns source value
-                    if(titleData.results[i].hasOwnProperty('image')){
-                        movieImgEl.attr("src",titleData.results[i].image.url)
                     } else {
-                        movieImgEl.attr("src","")
-                    }
-                    
-                    let movieDetails = $("<ul>")
-                    .html( 
-                    "<li> Movie Title: " + titleData.results[i].title + "</li>" +
-                    "<li> Release Date: " + titleData.results[i].year + "</li>")
-                    
-                    let movieContainerEl = $("<div>")
-                    .addClass("")
-                    .append(movieImgEl,movieDetails)
-                    .attr("id",titleData.results[i].id);
+                        // Create the elements for the verified movie
+                        let movieImgEl = $("<img>")
+                        .width(225)
+                        .height(300)
+                        .addClass("")
+                        
+                        //checks for picture content and assigns source value
+                        if(titleData.results[i].hasOwnProperty('image')){
+                            movieImgEl.attr("src",titleData.results[i].image.url);
+                        } else {
+                            movieImgEl.attr("src","");
+                        }
+                        
+                        let movieDetails = $("<ul>")
+                        .html( 
+                        "<li> Title: " + titleData.results[i].title + "</li>" +
+                        "<li> Release Date: " + titleData.results[i].year + "</li>" +
+                        "<li> Type: " + titleData.results[i].titleType + "</li>"
+                        )
+                        
+                        let linkToSoundtrack = $("<a>")
+                        .attr("href","./soundtrack.html?movie=" + titleData.results[i].id)
+                        .append(movieImgEl,movieDetails);
 
-                    $("#movie-list").append(movieContainerEl);
+                        let movieContainerEl = $("<div>")
+                        .addClass("")
+                        .append(linkToSoundtrack)
+                        .attr("id",titleData.results[i].id);
+
+                        $("#movie-list").append(movieContainerEl);
+                    }    
                 }
             }
         })
