@@ -57,7 +57,7 @@ generatePageElements = function(movieId) {
     .then(response => {
         response.json()
         .then(function(movieSoundtrack){
-
+            console.log(movieSoundtrack);
             //loop function to cycle through soundtrack list and attach
             for(var i=0; i<movieSoundtrack.soundtracks.length; i++) {
                 var trackNumber = i + 1;
@@ -85,17 +85,32 @@ generatePageElements = function(movieId) {
             //Generate track 1 image and info and append to div
             var trackImg = $("<img>")
             .width(171)
-            .height(228);
+            .height(228)
 
             var trackInfo = $("<ul>")
-            .html(
-                "<li>"+ "track 1 info" +"</li>" +
-                "<li>"+ "more track info" +"</li>" +
-                "<li>"+ "even more track info" +"</li>"
-            );
-            
-            $("#track-details").append(trackImg,trackInfo);
+             
+            //check to see if api info is presented clearly with "products" with artist and song
+            //"if" handles the not clearly presented info and else handles the clear format
+            if(!movieSoundtrack.soundtracks[0].products){
+                console.log("No picture for track 1 was found/placeholders here.");
+                trackImg.attr("src","")
+                trackInfo.html(
+                    "<li>Song Title: "+ movieSoundtrack.soundtracks[0].name +"</li>" +
+                    "<li>Artist: "+ movieSoundtrack.soundtracks[0].comment +"</li>" 
+                );
 
+            } else{
+
+                trackImg.attr("src",movieSoundtrack.soundtracks[0].products[0].image.url);
+
+                trackInfo.html(
+                    "<li> Song Title: "+ movieSoundtrack.soundtracks[0].name +"</li>" +
+                    "<li> Artist: "+ movieSoundtrack.soundtracks[0].products[0].artist +"</li>" 
+                     
+                );
+            }    
+                $("#track-details").append(trackImg,trackInfo);
+            
 
         })
     })
@@ -122,7 +137,6 @@ $("#track-list").on("click",".clickText", function(event){
         .then(function(movieSoundtrack){
             
 
-            $(this).css("color","purple");
             //first fix the links
             //empty out all the link divs
             for (i = 0; i<movieSoundtrack.soundtracks.length; i++) {
@@ -138,22 +152,41 @@ $("#track-list").on("click",".clickText", function(event){
                 "<li>" + "Insert Video Link Here" + "</li>"
             );
 
+            let divIndex = parseInt(currentTextDiv.next(".clickLink").attr("id").replace("LinksFor","")-1);
+
+
             //second part fixes the track information
             //empty out track information
             $("#track-details").html("");
+
             //fill in track information of clicked
             var trackImg = $("<img>")
-                    .width(171)
-                    .height(228);
+            .width(171)
+            .height(228)
 
             var trackInfo = $("<ul>")
-            .html(
-                "<li>"+ "track info" +"</li>" +
-                "<li>"+ "more trackededed info" +"</li>" +
-                "<li>"+ "even more track info" +"</li>"
-            );
-            
-            $("#track-details").append(trackImg,trackInfo);
+           
+            //check to see if api info is presented clearly with "products" with artist and song
+            //"if" handles the not clearly presented info and else handles the clear format
+            if(!movieSoundtrack.soundtracks[divIndex].products){
+                console.log("No picture for current track was found/placeholders here.");
+                trackImg.attr("src","")
+                trackInfo.html(
+                    "<li>Song Title: "+ movieSoundtrack.soundtracks[divIndex].name +"</li>" +
+                    "<li>"+ movieSoundtrack.soundtracks[divIndex].comment +"</li>"
+                );
+
+            } else{
+
+                trackImg.attr("src",movieSoundtrack.soundtracks[divIndex].products[0].image.url);
+
+                trackInfo.html(
+                    "<li> Song Title: "+ movieSoundtrack.soundtracks[divIndex].name +"</li>" +
+                    "<li> Artist: "+ movieSoundtrack.soundtracks[divIndex].products[0].artist +"</li>" 
+                     
+                );
+            }    
+                $("#track-details").append(trackImg,trackInfo);        
 
         })
     })
