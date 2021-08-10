@@ -24,7 +24,9 @@ createMovieList = function(movieTitle) {
                     } else {
                         // Create the elements for the verified movie
                         let movieImgEl = $("<img>")
-                        .addClass("movie-poster image")
+                        .width(225)
+                        .height(300)
+                        .addClass("card-image is")
                         
                         //checks for picture content and assigns source value
                         if(titleData.results[i].hasOwnProperty('image')){
@@ -36,21 +38,34 @@ createMovieList = function(movieTitle) {
                         let movieDetails = $("<ul>")
                         .html( 
                         "<li> Title: " + titleData.results[i].title + "</li>" +
-                        "<li> Release Date: " + titleData.results[i].year + "</li>" +
-                        "<li> Type: " + titleData.results[i].titleType + "</li>"
+                        "<li> Release Date: " + titleData.results[i].year + "</li>" 
+                        // + "<li> Type: " + titleData.results[i].titleType + "</li>"
                         )
-                        console.log(movieDetails)
+                        .addClass("list")
                         
+                        let cardImage = $("div")
+                        // .addClass("card-image is-flex-shrink-0")
+                        .append(movieImgEl);
+
+                        let cardContent = $("div")
+                        .addClass("card-content")
+                        .append(movieDetails);
+                                     
+                        let resultsCard = $("div")
+                        .addClass("card")
+                        .append(cardImage, cardContent);
+
                         let linkToSoundtrack = $("<a>")
+                        .addClass("is-clickable")
                         .attr("href","./soundtrack.html?movie=" + titleData.results[i].id)
-                        .append(movieImgEl,movieDetails);
+                        .append(resultsCard);
 
                         let movieContainerEl = $("<div>")
-                        .addClass("")
-                        .append(linkToSoundtrack)
+                        .addClass("section")
+                        .append(resultsCard, linkToSoundtrack)
                         .attr("id",titleData.results[i].id);
 
-                        $("#movie-list").empty().append(movieContainerEl);
+                        $(".return-results").append(movieContainerEl);
                     }    
                 }
             }
@@ -64,9 +79,9 @@ createMovieList = function(movieTitle) {
 }
 
 $("#submit-button").on("click", function(){
-    let currentMovieTitle = $("#movie-title-input").val().trim();
-    createMovieList(currentMovieTitle);
-    $("#movie-title-input").val("");
+    let currentMovieTitle = $("#movie-title-input").val().trim();    
+    createMovieList(currentMovieTitle)
+    $("#movie-title-input").val("");  
 });
 
-// createMovieList("Moana")
+// createMovieList("Moana");

@@ -48,26 +48,10 @@ navbar {
 
 .nav-search-bar {
     text-align: right;
-    font-family: 'century gothic', Arial, Helvetica, sans-serif;
     color: #4c6f73;
-    font-size: 2vw;
+    font-size: auto;
 }
 
-.form, #movie-title-input {
-    font-family:'Arial Narrow', Arial, sans-serif;
-    border: 1px solid #c99420;
-    border-radius: 5px;
-    line-height: 3vw;
-}
-.button, #submit-button {
-    color: #4C6f73;
-    font-family: 'century gothic', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: white;
-    border-radius: 15px;
-    font-size: 1.75vw;
-    line-height: 2vw;
-    margin: 1pt;
-}
 
 .movie-title-input {
     display: flex;
@@ -88,19 +72,13 @@ body {
 }
 
 .return-results {
-    display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(160px, lfr));
-    /* flex-wrap: wrap; */
-    /* flex-direction: row; */
+    /* display: grid; */
     margin: 10px;
-    /* align-items: space-evenly;
-    flex: 1 1 calc(33.33% - 20px); */
 }
 
 .return-results .box {
-    display: grid;
-    grid-template-rows: repeat(auto-fill, minmax (160px, lfr));
-    margin: 0px;
+    display: flex;
+    margin: 10px;
     align-items: space-evenly;
 }
 
@@ -108,17 +86,17 @@ body {
    margin: 10px;
 }
 
-.card-content, #details-card {
+.card-content {
     text-align: center;
-    font-family: 'poiret', Arial, Helvetica, sans-serif;
+    /* font-family: 'poiret', Arial, Helvetica, sans-serif; */
     font-size: smaller;
     border-radius: 5px;
     align-items: center;
-    overflow-wrap: break-word;
-}
+    /* overflow-wrap: break-word; */
+} 
 
 /* these are here for troubleshooting purposes */
-.red {
+/* .red {
     background-color: red;
 }
 
@@ -137,6 +115,7 @@ body {
     background-color: hotpink;
 }
 
-.missing-movie-poster-placeholder {
+.image-placeholder {
+    display: inline-flex;
     max-height: auto;
-}
+} */
