@@ -79,7 +79,7 @@ generatePageElements = function(movieId) {
 
             
             //fetch commands for lyrics and video
-            searchTermPlus = searchTermSpace.replaceAll(" ", +);
+            searchTermPlus = searchTermSpace.replaceAll(" ", "+");
 
             //fill out links for track 1
             $("#LinksFor1").html(
@@ -154,7 +154,7 @@ $("#track-list").on("click",".clickText", function(event){
             }
             
             //fetch commands for lyrics and video
-            searchTermPlus = searchTermSpace.replaceAll(" ", +);
+            searchTermPlus = searchTermSpace.replaceAll(" ", "+");
 
             //fill the links out
             currentTextDiv
