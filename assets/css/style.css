@@ -20,7 +20,6 @@ color:root {
 
 header {
     font-family: 'poiret', Arial, Helvetica, sans-serif;
-    display: flex;
     flex-wrap: nowrap;
     margin: 10px;
     color: #CD9199;
@@ -31,7 +30,6 @@ header {
 }
 
 header h1 {
-    display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-content: space-around;
