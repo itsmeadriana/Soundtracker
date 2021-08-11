@@ -126,16 +126,6 @@ function submitSearch(event) {
         $(".container").css("display", "block") 
     
     }
-    createMovieList(currentMovieTitle);
-    $("#movie-title-input").val("");
-    $("navbar").removeClass("box")
-    $("label").removeClass("label subtitle is-4")
-    $("input").removeClass("input is-primary is-large")
-    $("button").removeClass("is-primary is-light is-medium")
-    $("navbar").addClass("nav-search-bar navbar-after")
-    $("header").css("display", "block")
-    $(".is-fixed-top").css("display", "block")
-    $(".container").css("display", "block")
 
 }
 // createMovieList("moana");
