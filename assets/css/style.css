@@ -1,3 +1,11 @@
+main {
+    text-align: center;
+}
+
+.is-fixed-top, .container {
+    display: none;
+}
+
 color:root {
     --accent-color-1: #1E3D42;
     --accent-color-2: #CD9199;
@@ -12,7 +20,6 @@ color:root {
 
 header {
     font-family: 'poiret', Arial, Helvetica, sans-serif;
-    display: flex;
     flex-wrap: nowrap;
     margin: 10px;
     color: #CD9199;
@@ -23,7 +30,6 @@ header {
 }
 
 header h1 {
-    display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-content: space-around;
@@ -31,6 +37,7 @@ header h1 {
     margin-right: 10px;
     border-bottom: 0px;
     line-height: 10vw;
+    color: #CD9199;
 }
 
 navbar {
@@ -55,11 +62,41 @@ navbar {
     align-self: flex-end;
 }
 
+.nav-search-bar {
+    text-align: right;
+    font-family: 'century gothic', Arial, Helvetica, sans-serif;
+    color: #4c6f73;
+    font-size: 2vw;
+}
+
+.form, #movie-title-input {
+    font-family:'Arial Narrow', Arial, sans-serif;
+    border: 1px solid #c99420;
+    border-radius: 5px;
+    line-height: 3vw;
+}
+.button, #submit-button {
+    color: #4C6f73;
+    font-family: 'century gothic', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+    border-radius: 15px;
+    font-size: 1.75vw;
+    line-height: 2vw;
+    margin: 1pt;
+}
+
+.movie-title-input {
+    display: flex;
+    align-self: flex-end;
+}
+
+
 body {
     background-color:white;
     font-family: 'poiret',Arial, Helvetica, sans-serif;
     color: #4c6f73;
 }
+
 
 #results-header {
     font-family: 'artographie', Arial, Helvetica, sans-serif;
@@ -99,3 +136,33 @@ body {
     border-right: 1px dotted #4c6f73;
     align-items: center;
 } 
+
+header h1 a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* these are here for troubleshooting purposes */
+/* .red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+.green {
+    background-color: green;
+}
+
+.padding {
+    padding: 10px;
+}
+
+.pink {
+    background-color: hotpink;
+}
+
+.image-placeholder {
+    display: inline-flex;
+    max-height: auto;
+} */
