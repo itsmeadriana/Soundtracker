@@ -19,7 +19,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-details?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
+            "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -31,7 +31,7 @@ generatePageElements = function(movieId) {
             let movieImgEl = $("#movie-image")
                     .width(225)
                     .height(300)
-                    .addClass("")
+                    .addClass("image")
             
             //checks for movie picture and assigns source
             if(movieInfo.hasOwnProperty('image')) {
@@ -40,9 +40,9 @@ generatePageElements = function(movieId) {
 
             //creat movie details
             $("#movie-details").html(
-                "<li> Title: " + movieInfo.title + "</li>" +
-                "<li> Release Date: " + movieInfo.year + "</li>" +
-                "<li> Type: " + movieInfo.titleType + "</li>"
+                "<li>" + movieInfo.title + "</li>" +
+                "<li>" + movieInfo.year + "</li>" 
+                // + "<li> Type: " + movieInfo.titleType + "</li>"
             )
 
         });
@@ -56,7 +56,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
+            "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -94,8 +94,8 @@ generatePageElements = function(movieId) {
                 console.log("No picture for track 1 was found/placeholders here.");
                 trackImg.attr("src","")
                 trackInfo.html(
-                    "<li>Song Title: "+ movieSoundtrack.soundtracks[0].name +"</li>" +
-                    "<li>"+ movieSoundtrack.soundtracks[0].comment +"</li>" 
+                    "'" + movieSoundtrack.soundtracks[0].name +"'" +
+                     movieSoundtrack.soundtracks[0].comment 
                 );
                 
                 //set search term for links
@@ -108,7 +108,7 @@ generatePageElements = function(movieId) {
                 trackImg.attr("src",movieSoundtrack.soundtracks[0].products[0].image.url);
 
                 trackInfo.html(
-                    "<li> Song Title: "+ movieSoundtrack.soundtracks[0].name +"</li>" +
+                    "'"+ movieSoundtrack.soundtracks[0].name +"'" +
                     "<li> Artist: "+ movieSoundtrack.soundtracks[0].products[0].artist +"</li>" 
                 );
 
@@ -188,7 +188,7 @@ $("#track-list").on("click",".clickText", function(event){
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
+            "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })

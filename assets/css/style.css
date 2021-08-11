@@ -30,7 +30,6 @@ header h1 {
     font-size: 10vw;
     margin-right: 10px;
     border-bottom: 0px;
-    /* border-radius: 5px; */
     line-height: 10vw;
 }
 
@@ -38,11 +37,9 @@ navbar {
     display: flex;
     flex-wrap: wrap;
     margin: 10px;
-    /* background-color:#ffffff; */
     padding: 15px;
     border-radius: 25px;
     border-bottom: 1px dotted;
-    /* border: solid 1px; */
     justify-content: flex-end;
 }
 
@@ -82,40 +79,23 @@ body {
     align-items: space-evenly;
 }
 
-.card, #wrap {
+.card {
    margin: 10px;
+   border-radius: 3px;
+   display: inline-block;
+   padding: 10px;
+}
+
+.card-wrapper {
+    max-height: 430px;
 }
 
 .card-content {
     text-align: center;
-    /* font-family: 'poiret', Arial, Helvetica, sans-serif; */
+    font-family: 'poiret', Arial, Helvetica, sans-serif;
     font-size: smaller;
     border-radius: 5px;
+    border-bottom: 1px dotted grey;
+    border-right: 1px dotted #4c6f73;
     align-items: center;
-    /* overflow-wrap: break-word; */
 } 
-
-/* these are here for troubleshooting purposes */
-/* .red {
-    background-color: red;
-}
-
-.blue {
-    background-color: blue;
-}
-.green {
-    background-color: green;
-}
-
-.padding {
-    padding: 10px;
-}
-
-.pink {
-    background-color: hotpink;
-}
-
-.image-placeholder {
-    display: inline-flex;
-    max-height: auto;
-} */

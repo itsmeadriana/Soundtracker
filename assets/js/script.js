@@ -3,7 +3,7 @@ createMovieList = function(movieTitle) {
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
+		"x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
 		"x-rapidapi-host": "imdb8.p.rapidapi.com"
 	}
     })
@@ -26,7 +26,8 @@ createMovieList = function(movieTitle) {
                         let movieImgEl = $("<img>")
                         .width(225)
                         .height(300)
-                        .addClass("card-image is")
+                        .addClass("image is-centered")
+                       
                         
                         //checks for picture content and assigns source value
                         if(titleData.results[i].hasOwnProperty('image')){
@@ -37,31 +38,36 @@ createMovieList = function(movieTitle) {
                         
                         let movieDetails = $("<ul>")
                         .html( 
-                        "<li> Title: " + titleData.results[i].title + "</li>" +
-                        "<li> Release Date: " + titleData.results[i].year + "</li>" 
+                        titleData.results[i].title + "<p>" +
+                        titleData.results[i].year
                         // + "<li> Type: " + titleData.results[i].titleType + "</li>"
                         )
-                        .addClass("list")
+                        .addClass("title is-6")
+
                         
+
                         let cardImage = $("<div>")
-                        // .addClass("card-image is-flex-shrink-0")
+                        .width(225)
+                        .addClass("imagewrapper")
                         .append(movieImgEl);
 
                         let cardContent = $("<div>")
+                        .width(225)
+                     
                         .addClass("card-content")
                         .append(movieDetails);
                                      
                         let resultsCard = $("<div>")
-                        .addClass("card")
+                        .addClass("card-wrapper")
                         .append(cardImage, cardContent);
 
                         let linkToSoundtrack = $("<a>")
-                        .addClass("")
+                        .addClass("link")
                         .attr("href","./soundtrack.html?movie=" + titleData.results[i].id)
                         .append(resultsCard);
 
                         let movieContainerEl = $("<div>")
-                        .addClass("section")
+                        .addClass("card")
                         .append(linkToSoundtrack)
                         .attr("id",titleData.results[i].id);
 
@@ -86,4 +92,4 @@ $("#submit-button").on("click", function(){
     
 });
 
-// createMovieList("Moana");
+// createMovieList("moana");
