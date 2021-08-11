@@ -122,9 +122,10 @@ generatePageElements = function(movieId) {
             
             //fetch commands for lyrics and video
             searchTermWeird = searchTermSpace.replaceAll(" ", "%2B");
+            searchTermWeirdest = searchTermSpace.replaceAll(" ", "%20");
 
             //Lyric API fetch function
-            fetch(`${lyricUrl}?q=${titleLyrics}&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&type=${artistLyrics}&lyrics=1`)
+            fetch(lyricUrl+"?q=" +searchTermWeirdest+ "&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&lyrics=1")
                     .then(response => {
                         return response.json();
                     })
@@ -249,10 +250,12 @@ $("#track-list").on("click",".clickText", function(event){
             $("#track-details").append(trackImg,trackInfo);  
 
             //fetch commands for lyrics and video
+            console.log(searchTermSpace);
             searchTermWeird = searchTermSpace.replaceAll(" ", "%2B");
+            searchTermWeirdest = searchTermSpace.replaceAll(" ", "%20");
 
             //Lyric API fetch function
-            fetch(`${lyricUrl}?q=${titleLyrics}&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&type=${artistLyrics}&lyrics=1`)
+            fetch(lyricUrl+"?q=" +searchTermWeirdest+ "&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&lyrics=1")
                     .then(response => {
                         return response.json();
                     })
@@ -282,11 +285,12 @@ $("#track-list").on("click",".clickText", function(event){
                                         videoURL = videoURL.replace("watch?v=","embed/")
                                         console.log(videoURL);
                                         //fill the links out
+                                        console.log(videoURL);
                                         currentTextDiv
                                         .next(".clickLink")
                                         .html(
                                             "<li>" + 
-                                            "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>" 
+                                            "<iframe width='280' height='157' src='"+ videoURL + "' title='Youtube Video' frameborder='0' allowfullscreen></iframe>" 
                                             + "</li>" +
                                             "<li>" + songLyrics + "</li>"
                                         );
