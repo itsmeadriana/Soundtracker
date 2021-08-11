@@ -1,9 +1,10 @@
 let movieId = "";
-<<<<<<< HEAD
 let searchTermSpace = "";
-let searchTermPlus = "";
-=======
->>>>>>> feature/search-results-page
+let searchTermWeird = "";
+let artistLyrics = "";
+let titleLyrics = "";
+let videoURL = "";
+const lyricUrl = 'https://api.happi.dev/v1/music';
 
 //retrieve IMDb code from url query string
 var getMovieId = function () {
@@ -18,7 +19,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-details?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+            "x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -55,18 +56,14 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+            "x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
     .then(response => {
         response.json()
         .then(function(movieSoundtrack){
-<<<<<<< HEAD
             console.log(movieSoundtrack);
-=======
-
->>>>>>> feature/search-results-page
             //loop function to cycle through soundtrack list and attach
             for(var i=0; i<movieSoundtrack.soundtracks.length; i++) {
                 var trackNumber = i + 1;
@@ -84,24 +81,9 @@ generatePageElements = function(movieId) {
 
             }
 
-<<<<<<< HEAD
-            
-            //fetch commands for lyrics and video
-            searchTermPlus = searchTermSpace.replaceAll(" ", "+");
-
-=======
-            //fetch the information for lyrics and videos
->>>>>>> feature/search-results-page
-            //fill out links for track 1
-            $("#LinksFor1").html(
-            "<li>" + "Insert Lyrics Link Here" + "</li>" +
-            "<li>" + "Insert Video Link Here" + "</li>"
-            )
-   
             //Generate track 1 image and info and append to div
             var trackImg = $("<img>")
             .width(171)
-<<<<<<< HEAD
             .height(228)
 
             var trackInfo = $("<ul>")
@@ -115,7 +97,10 @@ generatePageElements = function(movieId) {
                     "<li>Song Title: "+ movieSoundtrack.soundtracks[0].name +"</li>" +
                     "<li>"+ movieSoundtrack.soundtracks[0].comment +"</li>" 
                 );
+                
                 //set search term for links
+                artistLyrics = movieSoundtrack.soundtracks[0].comment;
+                titleLyrics = movieSoundtrack.soundtracks[0].name;
                 searchTermSpace = movieSoundtrack.soundtracks[0].name + " " + movieSoundtrack.soundtracks[0].comment;
 
             } else{
@@ -128,30 +113,71 @@ generatePageElements = function(movieId) {
                 );
 
                 //set searchTerm for links
-                searchTermSpace = movieSoundtrack.soundtracks[0].name + " " + movieSoundtrack.soundtracks[0].products[0].artist
+                artistLyrics = movieSoundtrack.soundtracks[0].products[0].artist;
+                titleLyrics = movieSoundtrack.soundtracks[0].name;
+                searchTermSpace = movieSoundtrack.soundtracks[0].name + " " + movieSoundtrack.soundtracks[0].products[0].artist;
             }    
-                $("#track-details").append(trackImg,trackInfo);
-            
-=======
-            .height(228);
-
-            var trackInfo = $("<ul>")
-            .html(
-                "<li>"+ "track 1 info" +"</li>" +
-                "<li>"+ "more track info" +"</li>" +
-                "<li>"+ "even more track info" +"</li>"
-            );
             
             $("#track-details").append(trackImg,trackInfo);
+            
+            //fetch commands for lyrics and video
+            searchTermWeird = searchTermSpace.replaceAll(" ", "%2B");
+            searchTermWeirdest = searchTermSpace.replaceAll(" ", "%20");
 
->>>>>>> feature/search-results-page
-
-        })
+            //Lyric API fetch function
+            fetch(lyricUrl+"?q=" +searchTermWeirdest+ "&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&lyrics=1")
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(responseJSON => {
+                        const trackId = responseJSON.result[0].id_track;
+                        const albumId = responseJSON.result[0].id_album;
+                        const artistId = responseJSON.result[0].id_artist;
+                        
+                        fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
+                            .then(response => {
+                                return response.json();
+                            })
+                            .then(responseJSON => {
+                                const songLyrics = responseJSON.result.lyrics;
+                                    //fetch video API
+                                    fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
+                                    "method": "GET",
+                                    "headers": {
+                                        "x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+                                        "x-rapidapi-host": "youtube-search-results.p.rapidapi.com"
+                                    }
+                                    })
+                                    .then(response => {
+                                    return response.json()
+                                    .then( responseJSON => {
+                                        videoURL = responseJSON.items[0].url;
+                                        videoURL = videoURL.replace("watch?v=","embed/")
+                                        console.log(videoURL);
+                                            //fill out links for track 1
+                                            $("#LinksFor1").html(
+                                                "<li>" + 
+                                                "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>" 
+                                                + "</li>" +
+                                                "<li>" + songLyrics + "</li>"
+                                                )
+                                    })
+                                    })
+                                    .catch(err => {
+                                        console.error(err);
+                                    });
+                                    
+                                })
+                                                    
+                            })   
+                    })
     })
     .catch(err => {
         console.error(err);
     });
-}
+};
+
+
 
 // This is what happens when you click on the Track title
 $("#track-list").on("click",".clickText", function(event){
@@ -162,7 +188,7 @@ $("#track-list").on("click",".clickText", function(event){
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+            "x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -171,10 +197,6 @@ $("#track-list").on("click",".clickText", function(event){
         .then(function(movieSoundtrack){
             
 
-<<<<<<< HEAD
-=======
-            $(this).css("color","purple");
->>>>>>> feature/search-results-page
             //first fix the links
             //empty out all the link divs
             for (i = 0; i<movieSoundtrack.soundtracks.length; i++) {
@@ -182,21 +204,7 @@ $("#track-list").on("click",".clickText", function(event){
                 $(tempDiv).html("");
             }
             
-<<<<<<< HEAD
-            //fetch commands for lyrics and video
-            searchTermPlus = searchTermSpace.replaceAll(" ", "+");
 
-=======
->>>>>>> feature/search-results-page
-            //fill the links out
-            currentTextDiv
-            .next(".clickLink")
-            .html(
-                "<li>" + "Insert Lyrics Link Here" + "</li>" +
-                "<li>" + "Insert Video Link Here" + "</li>"
-            );
-
-<<<<<<< HEAD
             let divIndex = parseInt(currentTextDiv.next(".clickLink").attr("id").replace("LinksFor","")-1);
 
 
@@ -220,7 +228,9 @@ $("#track-list").on("click",".clickText", function(event){
                     "<li>Song Title: "+ movieSoundtrack.soundtracks[divIndex].name +"</li>" +
                     "<li>"+ movieSoundtrack.soundtracks[divIndex].comment +"</li>"
                 );
-
+                
+                artistLyrics = movieSoundtrack.soundtracks[divIndex].comment;
+                titleLyrics = movieSoundtrack.soundtracks[divIndex].name;
                 searchTermSpace = movieSoundtrack.soundtracks[divIndex].name + " " + movieSoundtrack.soundtracks[divIndex].comment;
 
             } else{
@@ -231,29 +241,69 @@ $("#track-list").on("click",".clickText", function(event){
                     "<li> Song Title: "+ movieSoundtrack.soundtracks[divIndex].name +"</li>" +
                     "<li> Artist: "+ movieSoundtrack.soundtracks[divIndex].products[0].artist +"</li>"        
                 );
-
+                
+                artistLyrics = movieSoundtrack.soundtracks[divIndex].products[0].artist;
+                titleLyrics = movieSoundtrack.soundtracks[divIndex].name;
                 searchTermSpace = movieSoundtrack.soundtracks[divIndex].name + " " + movieSoundtrack.soundtracks[divIndex].products[0].artist;
             }    
-                $("#track-details").append(trackImg,trackInfo);        
-=======
-            //second part fixes the track information
-            //empty out track information
-            $("#track-details").html("");
-            //fill in track information of clicked
-            var trackImg = $("<img>")
-                    .width(171)
-                    .height(228);
 
-            var trackInfo = $("<ul>")
-            .html(
-                "<li>"+ "track info" +"</li>" +
-                "<li>"+ "more trackededed info" +"</li>" +
-                "<li>"+ "even more track info" +"</li>"
-            );
-            
-            $("#track-details").append(trackImg,trackInfo);
->>>>>>> feature/search-results-page
+            $("#track-details").append(trackImg,trackInfo);  
 
+            //fetch commands for lyrics and video
+            console.log(searchTermSpace);
+            searchTermWeird = searchTermSpace.replaceAll(" ", "%2B");
+            searchTermWeirdest = searchTermSpace.replaceAll(" ", "%20");
+
+            //Lyric API fetch function
+            fetch(lyricUrl+"?q=" +searchTermWeirdest+ "&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&lyrics=1")
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(responseJSON => {
+                        const trackId = responseJSON.result[0].id_track;
+                        const albumId = responseJSON.result[0].id_album;
+                        const artistId = responseJSON.result[0].id_artist;
+                        
+                        fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
+                            .then(response => {
+                                return response.json();
+                            })
+                            .then(responseJSON => {
+                                const songLyrics = responseJSON.result.lyrics;
+                                    //fetch video API
+                                    fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
+                                    "method": "GET",
+                                    "headers": {
+                                        "x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+                                        "x-rapidapi-host": "youtube-search-results.p.rapidapi.com"
+                                    }
+                                    })
+                                    .then(response => {
+                                    return response.json()
+                                    .then( responseJSON => {
+                                        videoURL = responseJSON.items[0].url;
+                                        videoURL = videoURL.replace("watch?v=","embed/")
+                                        console.log(videoURL);
+                                        //fill the links out
+                                        console.log(videoURL);
+                                        currentTextDiv
+                                        .next(".clickLink")
+                                        .html(
+                                            "<li>" + 
+                                            "<iframe width='280' height='157' src='"+ videoURL + "' title='Youtube Video' frameborder='0' allowfullscreen></iframe>" 
+                                            + "</li>" +
+                                            "<li>" + songLyrics + "</li>"
+                                        );
+                                    })
+                                    })
+                                    .catch(err => {
+                                        console.error(err);
+                                    });
+                                    
+                            })
+                                                    
+                    })   
+                  
         })
     })
 });
