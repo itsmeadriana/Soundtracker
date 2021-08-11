@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,19 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
     </style>
+    <link rel="stylesheet" href="assets/css/web fonts/art deco/stylesheet.css" type="text/css" charset="utf-8" />
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Soundtracker</title>
 </head>
 <body>
-    <section class="section is-medium">
+    <section class="section">
         <div class="columns">
             <div class="column"></div>
                 <main class="column">
-                    <h1 class="title is-1">soundtracker</h1>
-                    <div class="box">
+                    <header>
+                        <h1>soundtracker</h1>
+                    </header>
+                    <navbar class="box">
                         <!--Search form-->    
                         <form>
                             <div class="field">
@@ -30,19 +34,44 @@
                                 <button class="button is-primary is-light is-medium" type="button" id="submit-button">Search</button>
                             </div>
                         </form>
-                    </div>
+                    </navbar>
                 </main>
             <div class="column"></div>
         </div>
     </section>
+<!--adrianas work-->
 
+<!-- <navbar class="is-fixed-top">
+    
+    <form class="nav-search-bar">
+        <label for="movie-title-input">search for a movie:</label>
+        <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
+        <button type="button" id="submit-button">search</button>
+    </form>
+</navbar> -->
 
-<!--div for the movie list -->
-<div id="movie-list">
+<div class="container">
+    <!-- section for "search results" heading -->
+    <section class="search-results">
+        <h2 id="results-header">
+            search results
+        </h2>
+    </section>
 
-</div>
+    <!--section for the movie list -->
+    <section class="return-results" id="list">
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+
+</div>
 </body>
+<footer class="footer is-fixed-bottom has-background-white">
+    <section>
+        <h6 >&copy Copyright Soundtracker 2021</h6>
+        <br>
+        <h6>Made with love by the Soundtracker Team</h6>
+    </section>
+</footer>
 </html>
