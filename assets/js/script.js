@@ -120,12 +120,12 @@ function submitSearch(event) {
         $("#movie-list").html("");
         createMovieList(currentMovieTitle);
         $("#movie-title-input").val("");
-        $("#movie-title-input").val("");
         $("header").css("display", "block")
         $(".is-fixed-top").css("display", "block")
         $(".container").css("display", "block") 
     
     }
+    $("#movie-list").html("");
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
     $("navbar").removeClass("box")
