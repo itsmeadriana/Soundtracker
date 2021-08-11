@@ -48,8 +48,6 @@ createMovieList = function (movieTitle) {
                                     )
                                     .addClass("title is-6")
 
-
-
                                 let cardImage = $("<div>")
                                     .width(225)
                                     .addClass("imagewrapper")
@@ -57,7 +55,6 @@ createMovieList = function (movieTitle) {
 
                                 let cardContent = $("<div>")
                                     .width(225)
-
                                     .addClass("card-content")
                                     .append(movieDetails);
 

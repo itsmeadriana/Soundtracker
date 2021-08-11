@@ -68,7 +68,7 @@ navbar {
 }
 
 .form, #movie-title-input {
-    font-family:'Arial Narrow', Arial, sans-serif;
+    font-family:'century gothic';
     border: 1px solid #c99420;
     border-radius: 5px;
     line-height: 3vw;
@@ -119,6 +119,7 @@ body {
 }
 
 .card {
+    display: inline-block;
    margin: 10px;
    border-radius: 3px;
    display: inline-block;
