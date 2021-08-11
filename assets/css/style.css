@@ -118,15 +118,24 @@ body {
     align-items: space-evenly;
 }
 
-.card, #wrap {
+.card {
    margin: 10px;
+   border-radius: 3px;
+   display: inline-block;
+   padding: 10px;
 }
 
-.card-content, #details-card {
+.card-wrapper {
+    max-height: 430px;
+}
+
+.card-content {
     text-align: center;
     font-family: 'poiret', Arial, Helvetica, sans-serif;
     font-size: smaller;
     border-radius: 5px;
+    border-bottom: 1px dotted grey;
+    border-right: 1px dotted #4c6f73;
     align-items: center;
     overflow-wrap: break-word;
 }
@@ -153,4 +162,4 @@ body {
 
 .missing-movie-poster-placeholder {
     max-height: auto;
-}
+} 

@@ -113,17 +113,7 @@ function hideModal() {
 function submitSearch(event) {
     event.preventDefault();
     let currentMovieTitle = $("#movie-title-input").val().trim();
-    if (currentMovieTitle === "") {
-        console.log("nothing");
-        // show modal
-        let modalEl = $(".modal")
-            .addClass("is-active");
-    }
-    else {
-        $("#movie-list").html("");
-        createMovieList(currentMovieTitle);
-        $("#movie-title-input").val("");
-    }
+<<<<<<< HEAD
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
     $("navbar").removeClass("box")
@@ -136,5 +126,22 @@ function submitSearch(event) {
     $(".container").css("display", "block")
 
 }
-// createMovieList("moana");
+);
 
+createMovieList("Moana");
+
+=======
+    if (currentMovieTitle === "") {
+        console.log("nothing");
+        // show modal
+        let modalEl = $(".modal")
+            .addClass("is-active");
+    }
+    else {
+        $("#movie-list").html("");
+        createMovieList(currentMovieTitle);
+        $("#movie-title-input").val("");
+    }
+}
+// createMovieList("moana");
+>>>>>>> develop
