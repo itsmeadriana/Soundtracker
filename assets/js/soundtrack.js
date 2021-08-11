@@ -4,7 +4,9 @@ let searchTermWeird = "";
 let artistLyrics = "";
 let titleLyrics = "";
 let videoURL = "";
+let songLyrics = "";
 const lyricUrl = 'https://api.happi.dev/v1/music';
+let videoLink ="";
 
 //retrieve IMDb code from url query string
 var getMovieId = function () {
@@ -131,16 +133,26 @@ generatePageElements = function(movieId) {
                         return response.json();
                     })
                     .then(responseJSON => {
-                        const trackId = responseJSON.result[0].id_track;
-                        const albumId = responseJSON.result[0].id_album;
-                        const artistId = responseJSON.result[0].id_artist;
-                        
-                        fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
-                            .then(response => {
-                                return response.json();
-                            })
-                            .then(responseJSON => {
-                                const songLyrics = responseJSON.result.lyrics;
+                        if(!responseJSON.hasOwnProperty('result')){
+                            songLyrics = "No Lyrics Available.";
+                        }
+                        else if(!responseJSON.result[0]) {
+                            songLyrics ="No Lyrics Available.";
+                        }
+                        else{
+                        let trackId = responseJSON.result[0].id_track;
+                        let albumId = responseJSON.result[0].id_album;
+                        let artistId = responseJSON.result[0].id_artist;
+              
+                                fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
+                                    .then(response => {
+                                        return response.json();
+                                    })
+                                    .then(responseJSON => {
+                    
+                                        songLyrics = responseJSON.result.lyrics;
+                                    })
+                        }
                                     //fetch video API
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
@@ -152,25 +164,32 @@ generatePageElements = function(movieId) {
                                     .then(response => {
                                     return response.json()
                                     .then( responseJSON => {
+                                        if(!responseJSON.items) {
+                                            videoURL = "";
+                                            videoLink = "<img src = 'https://via.placeholder.com/280x157?text=Sorry,no+video+found.'>";
+                                        }
+                                        else{
                                         videoURL = responseJSON.items[0].url;
-                                        videoURL = videoURL.replace("watch?v=","embed/")
-                                        console.log(videoURL);
+                                        videoURL = videoURL.replace("watch?v=","embed/");
+                                        videoLink = "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>";
+                                        }
+                                        
                                             //fill out links for track 1
                                             $("#LinksFor1").html(
                                                 "<li>" + 
-                                                "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>" 
-                                                + "</li>" +
+                                                videoLink + 
+                                                "</li>" +
                                                 "<li>" + songLyrics + "</li>"
-                                                )
+                                                );
                                     })
                                     })
                                     .catch(err => {
                                         console.error(err);
                                     });
                                     
-                                })
                                                     
                             })   
+                            
                     })
     })
     .catch(err => {
@@ -258,20 +277,30 @@ $("#track-list").on("click",".clickText", function(event){
 
             //Lyric API fetch function
             fetch(lyricUrl+"?q=" +searchTermWeirdest+ "&limit=&apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s&lyrics=1")
-                    .then(response => {
-                        return response.json();
-                    })
-                    .then(responseJSON => {
-                        const trackId = responseJSON.result[0].id_track;
-                        const albumId = responseJSON.result[0].id_album;
-                        const artistId = responseJSON.result[0].id_artist;
-                        
+            .then(response => {
+                return response.json();
+            })
+            .then(responseJSON => { 
+                if(!responseJSON.hasOwnProperty('result')){
+                    songLyrics = "No Lyrics Available."
+                }
+                else if(!responseJSON.result[0]) {
+                    songLyrics ="No Lyrics Available.";                
+                }
+                else{
+                let trackId = responseJSON.result[0].id_track;
+                let albumId = responseJSON.result[0].id_album;
+                let artistId = responseJSON.result[0].id_artist;
+      
                         fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
                             .then(response => {
                                 return response.json();
                             })
                             .then(responseJSON => {
-                                const songLyrics = responseJSON.result.lyrics;
+            
+                                songLyrics = responseJSON.result.lyrics;
+                            })
+                }
                                     //fetch video API
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
@@ -283,17 +312,24 @@ $("#track-list").on("click",".clickText", function(event){
                                     .then(response => {
                                     return response.json()
                                     .then( responseJSON => {
+                                        if(!responseJSON.items) {
+                                            videoURL = "";
+                                            videoLink = "<img src = 'https://via.placeholder.com/280x157?text=Sorry,no+video+found.'>";
+                                        }
+                                        else{
                                         videoURL = responseJSON.items[0].url;
-                                        videoURL = videoURL.replace("watch?v=","embed/")
-                                        console.log(videoURL);
+                                        videoURL = videoURL.replace("watch?v=","embed/");
+                                        videoLink = "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>"
+                                        }
+                                        
                                         //fill the links out
-                                        console.log(videoURL);
+                                       ;
                                         currentTextDiv
                                         .next(".clickLink")
                                         .html(
                                             "<li>" + 
-                                            "<iframe width='280' height='157' src='"+ videoURL + "' title='Youtube Video' frameborder='0' allowfullscreen></iframe>" 
-                                            + "</li>" +
+                                            videoLink +
+                                            "</li>" +
                                             "<li>" + songLyrics + "</li>"
                                         );
                                     })
@@ -302,9 +338,9 @@ $("#track-list").on("click",".clickText", function(event){
                                         console.error(err);
                                     });
                                     
-                            })
+                            
                                                     
-                    })   
+                        })   
                   
         })
     })
