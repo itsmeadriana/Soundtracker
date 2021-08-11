@@ -3,7 +3,7 @@ createMovieList = function(movieTitle) {
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-key": "6b2242570bmshb1c48ae9a0c8442p1e0090jsnd66a0420891d",
+		"x-rapidapi-key": "b07fe43eb6msh25d2ec5ffee67dbp1a8cccjsn93e33dff7b9f",
 		"x-rapidapi-host": "imdb8.p.rapidapi.com"
 	}
     })
@@ -66,6 +66,7 @@ createMovieList = function(movieTitle) {
 
 $("#submit-button").on("click", function(){
     let currentMovieTitle = $("#movie-title-input").val().trim();
+    $("#movie-list").html("");
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
 });
