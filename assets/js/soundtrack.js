@@ -133,7 +133,10 @@ generatePageElements = function(movieId) {
                         return response.json();
                     })
                     .then(responseJSON => {
-                        if(!responseJSON.result[0]) {
+                        if(!responseJSON.hasOwnProperty('result')){
+                            songLyrics = "No Lyrics Available.";
+                        }
+                        else if(!responseJSON.result[0]) {
                             songLyrics ="No Lyrics Available.";
                         }
                         else{
@@ -278,8 +281,11 @@ $("#track-list").on("click",".clickText", function(event){
                 return response.json();
             })
             .then(responseJSON => { 
-                if(!responseJSON.result[0]) {
-                    songLyrics ="No Lyrics Available.";
+                if(!responseJSON.hasOwnProperty('result')){
+                    songLyrics = "No Lyrics Available."
+                }
+                else if(!responseJSON.result[0]) {
+                    songLyrics ="No Lyrics Available.";                
                 }
                 else{
                 let trackId = responseJSON.result[0].id_track;

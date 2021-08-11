@@ -147,6 +147,7 @@ body {
 
 .clickText:hover {
     font-size: larger;
+    cursor: pointer;
 }
 
 .track-list, #track-list {
