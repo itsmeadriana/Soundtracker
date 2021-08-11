@@ -39,6 +39,7 @@ header h1 {
     margin-right: 10px;
     border-bottom: 0px;
     line-height: 10vw;
+    color: #CD9199;
 }
 
 navbar {
@@ -137,6 +138,11 @@ body {
     border-right: 1px dotted #4c6f73;
     align-items: center;
 } 
+
+header h1 a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
 
 /* these are here for troubleshooting purposes */
 /* .red {
