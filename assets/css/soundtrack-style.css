@@ -32,6 +32,7 @@ header h1 {
     border-bottom: 0px;
     /* border-radius: 5px; */
     line-height: 10vw;
+    color: #CD9199;
 }
 
 navbar {
@@ -162,6 +163,11 @@ body {
 .details-text {
     text-align: center;
     font-family: 'artographie','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header h1 a {
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
 .track-image {
