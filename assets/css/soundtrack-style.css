@@ -106,7 +106,7 @@ body {
 
 .card {
    margin: 0;
-   display:inline-block
+   display:inline-block;
 
 }
 
@@ -117,7 +117,11 @@ body {
 
 .column {
     margin:20px;
+    width: 100%;
+}
 
+.auto-col {
+    width: fit-content
 }
 
 .column-title {
