@@ -1,6 +1,9 @@
 let movieId = "";
+<<<<<<< HEAD
 let searchTermSpace = "";
 let searchTermPlus = "";
+=======
+>>>>>>> feature/search-results-page
 
 //retrieve IMDb code from url query string
 var getMovieId = function () {
@@ -59,7 +62,11 @@ generatePageElements = function(movieId) {
     .then(response => {
         response.json()
         .then(function(movieSoundtrack){
+<<<<<<< HEAD
             console.log(movieSoundtrack);
+=======
+
+>>>>>>> feature/search-results-page
             //loop function to cycle through soundtrack list and attach
             for(var i=0; i<movieSoundtrack.soundtracks.length; i++) {
                 var trackNumber = i + 1;
@@ -77,10 +84,14 @@ generatePageElements = function(movieId) {
 
             }
 
+<<<<<<< HEAD
             
             //fetch commands for lyrics and video
             searchTermPlus = searchTermSpace.replaceAll(" ", "+");
 
+=======
+            //fetch the information for lyrics and videos
+>>>>>>> feature/search-results-page
             //fill out links for track 1
             $("#LinksFor1").html(
             "<li>" + "Insert Lyrics Link Here" + "</li>" +
@@ -90,6 +101,7 @@ generatePageElements = function(movieId) {
             //Generate track 1 image and info and append to div
             var trackImg = $("<img>")
             .width(171)
+<<<<<<< HEAD
             .height(228)
 
             var trackInfo = $("<ul>")
@@ -120,6 +132,19 @@ generatePageElements = function(movieId) {
             }    
                 $("#track-details").append(trackImg,trackInfo);
             
+=======
+            .height(228);
+
+            var trackInfo = $("<ul>")
+            .html(
+                "<li>"+ "track 1 info" +"</li>" +
+                "<li>"+ "more track info" +"</li>" +
+                "<li>"+ "even more track info" +"</li>"
+            );
+            
+            $("#track-details").append(trackImg,trackInfo);
+
+>>>>>>> feature/search-results-page
 
         })
     })
@@ -146,6 +171,10 @@ $("#track-list").on("click",".clickText", function(event){
         .then(function(movieSoundtrack){
             
 
+<<<<<<< HEAD
+=======
+            $(this).css("color","purple");
+>>>>>>> feature/search-results-page
             //first fix the links
             //empty out all the link divs
             for (i = 0; i<movieSoundtrack.soundtracks.length; i++) {
@@ -153,9 +182,12 @@ $("#track-list").on("click",".clickText", function(event){
                 $(tempDiv).html("");
             }
             
+<<<<<<< HEAD
             //fetch commands for lyrics and video
             searchTermPlus = searchTermSpace.replaceAll(" ", "+");
 
+=======
+>>>>>>> feature/search-results-page
             //fill the links out
             currentTextDiv
             .next(".clickLink")
@@ -164,6 +196,7 @@ $("#track-list").on("click",".clickText", function(event){
                 "<li>" + "Insert Video Link Here" + "</li>"
             );
 
+<<<<<<< HEAD
             let divIndex = parseInt(currentTextDiv.next(".clickLink").attr("id").replace("LinksFor","")-1);
 
 
@@ -202,6 +235,24 @@ $("#track-list").on("click",".clickText", function(event){
                 searchTermSpace = movieSoundtrack.soundtracks[divIndex].name + " " + movieSoundtrack.soundtracks[divIndex].products[0].artist;
             }    
                 $("#track-details").append(trackImg,trackInfo);        
+=======
+            //second part fixes the track information
+            //empty out track information
+            $("#track-details").html("");
+            //fill in track information of clicked
+            var trackImg = $("<img>")
+                    .width(171)
+                    .height(228);
+
+            var trackInfo = $("<ul>")
+            .html(
+                "<li>"+ "track info" +"</li>" +
+                "<li>"+ "more trackededed info" +"</li>" +
+                "<li>"+ "even more track info" +"</li>"
+            );
+            
+            $("#track-details").append(trackImg,trackInfo);
+>>>>>>> feature/search-results-page
 
         })
     })
