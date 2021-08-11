@@ -275,7 +275,11 @@ $("#track-list").on("click",".clickText", function(event){
             .then(response => {
                 return response.json();
             })
-            .then(responseJSON => {
+            .then(responseJSON => { debugger;
+                if(!responseJSON.result[0]) {
+                    songLyrics ="No Lyrics Available.";
+                }
+                else{
                 let trackId = responseJSON.result[0].id_track;
                 let albumId = responseJSON.result[0].id_album;
                 let artistId = responseJSON.result[0].id_artist;
@@ -285,11 +289,10 @@ $("#track-list").on("click",".clickText", function(event){
                                 return response.json();
                             })
                             .then(responseJSON => {
-                                if(!responseJSON.result){
-
-                                } else {
+            
                                 songLyrics = responseJSON.result.lyrics;
-                                }
+                            })
+                }
                                     //fetch video API
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
@@ -327,7 +330,7 @@ $("#track-list").on("click",".clickText", function(event){
                                         console.error(err);
                                     });
                                     
-                            })
+                            
                                                     
                         })   
                   
