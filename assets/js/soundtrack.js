@@ -133,22 +133,23 @@ generatePageElements = function(movieId) {
                         return response.json();
                     })
                     .then(responseJSON => {
+                        if(!responseJSON.result[0]) {
+                            songLyrics ="No Lyrics Available.";
+                        }
+                        else{
                         let trackId = responseJSON.result[0].id_track;
                         let albumId = responseJSON.result[0].id_album;
                         let artistId = responseJSON.result[0].id_artist;
-
-                        fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
-                            .then(response => {
-                                return response.json();
-                            })
-                            .then(responseJSON => {
-                                if(!responseJSON.result){
-                                    songLyrics = "No Lyrics Available."
-                                }
-
-                                else{
-                                    songLyrics = responseJSON.result.lyrics;
-                                }           
+              
+                                fetch(`${lyricUrl}/artists/${artistId}/albums/${albumId}/tracks/${trackId}/lyrics?apikey=de0e3806cGECAUNtppSHBG9PYGKL91ld3MmJH1I12jCQfzU3zIILKL5s`)
+                                    .then(response => {
+                                        return response.json();
+                                    })
+                                    .then(responseJSON => {
+                    
+                                        songLyrics = responseJSON.result.lyrics;
+                                    })
+                        }
                                     //fetch video API
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
@@ -167,7 +168,7 @@ generatePageElements = function(movieId) {
                                         else{
                                         videoURL = responseJSON.items[0].url;
                                         videoURL = videoURL.replace("watch?v=","embed/");
-                                        videoLink = "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>"
+                                        videoLink = "<iframe width='280' height='157' src='"+ videoURL + "' frameborder='0' allowfullscreen></iframe>";
                                         }
                                         
                                             //fill out links for track 1
@@ -176,14 +177,13 @@ generatePageElements = function(movieId) {
                                                 videoLink + 
                                                 "</li>" +
                                                 "<li>" + songLyrics + "</li>"
-                                                )
+                                                );
                                     })
                                     })
                                     .catch(err => {
                                         console.error(err);
                                     });
                                     
-                                })
                                                     
                             })   
                             
@@ -277,7 +277,7 @@ $("#track-list").on("click",".clickText", function(event){
             .then(response => {
                 return response.json();
             })
-            .then(responseJSON => { debugger;
+            .then(responseJSON => { 
                 if(!responseJSON.result[0]) {
                     songLyrics ="No Lyrics Available.";
                 }
