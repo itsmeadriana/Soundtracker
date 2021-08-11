@@ -18,10 +18,10 @@
 
 <navbar class="is-fixed-top">
     <!-- search bar form -->
-    <form class="nav-search-bar">
+    <form class="nav-search-bar" id="search-form">
         <label for="movie-title-input">search for a movie:</label>
         <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
-        <button class="button is-danger is-light is-small is-rounded is-outlined" type="button" id="submit-button">search</button>
+        <button type="button" class="button is-danger is-light is-small is-rounded is-outlined" id="submit-button">search</button>
     </form>
 </navbar>
 
@@ -32,6 +32,15 @@
             search results
         </h2>
     </section>
+    
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content notification" id="error-message">
+            <p>Error! Search results not found. Please try again.</p>
+          <!-- Any other Bulma elements you want -->
+        </div>
+        <button class="modal-close is-large" id="modal-close" aria-label="close"></button>
+      </div>
 
     <!--section for the movie list -->
     <section class="return-results" id="movie-list">
@@ -47,7 +56,7 @@
           <p>&copy Copyright Soundtracker 2021<p>
         <!-- </div>
         <div class="column"> -->
-        <p>❤️ Made with love (and many headaches) by the Soundtracker Team</p>  
+        <p>❤️ Made with love by the Soundtracker Team</p>  
         </div>        
     </div>
 </footer>
