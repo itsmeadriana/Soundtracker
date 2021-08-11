@@ -1,3 +1,16 @@
+main {
+    text-align: center;
+}
+
+/* h1 {
+    font-family: 'Poiret One', cursive;
+    font-size: 64px;
+} */
+
+.is-fixed-top, .container {
+    display: none;
+}
+/* adrianas styling */
 color:root {
     --accent-color-1: #1E3D42;
     --accent-color-2: #CD9199;
@@ -20,6 +33,7 @@ header {
     border-bottom: 1px solid #c99420;
     border-top: 1px solid #c99420;
     background-color: white;
+    text-align: center;
 }
 
 header h1 {
@@ -54,7 +68,7 @@ navbar {
 }
 
 .form, #movie-title-input {
-    font-family:'Arial Narrow', Arial, sans-serif;
+    font-family:'century gothic';
     border: 1px solid #c99420;
     border-radius: 5px;
     line-height: 3vw;
@@ -100,6 +114,7 @@ body {
 }
 
 .card {
+    display: inline-block;
    margin: 10px;
    border-radius: 3px;
    display: inline-block;

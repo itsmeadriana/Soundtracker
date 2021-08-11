@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
@@ -24,15 +23,15 @@
                     </header>
                     <navbar class="box">
                         <!--Search form-->    
-                        <form id="search-form">
+                        <form>
                             <div class="field">
                                 <label class="label subtitle is-4" for="movie-title-input">Search for a movie:</label>
                                 <div class="control">
-                                    <input type="text" class="input is-primary is-large"  id="movie-title-input" placeholder="e.g. Cinderella">
+                                    <input class="input is-primary is-large" type="text" id="movie-title-input" placeholder="e.g. Cinderella">
                                 </div>
                             </div>
                             <div class="control">
-                                <button type="button"  class="button is-primary is-light is-medium" id="submit-button">Search</button>
+                                <button class="button is-primary is-light is-medium" type="button" id="submit-button">Search</button>
                             </div>
                         </form>
                     </navbar>
@@ -42,9 +41,15 @@
     </section>
 <!--adrianas work-->
 
+<<<<<<< HEAD
 <!-- <navbar class="is-fixed-top">
     
     <form class="nav-search-bar">
+=======
+<navbar class="is-fixed-top">
+    <!-- search bar form -->
+    <form class="nav-search-bar" id="search-form">
+>>>>>>> develop
         <label for="movie-title-input">search for a movie:</label>
         <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
         <button type="button" class="button is-danger is-light is-small is-rounded is-outlined" id="submit-button">search</button>
@@ -77,6 +82,14 @@
 
 </div>
 </body>
+<<<<<<< HEAD
+<footer class="footer is-fixed-bottom has-background-white">
+    <section>
+        <h6 >&copy Copyright Soundtracker 2021</h6>
+        <br>
+        <h6>Made with love by the Soundtracker Team</h6>
+    </section>
+=======
 <footer class="footer is-fixed-bottom">
     <div class="card-content">
         <!-- <div  class=""> -->
@@ -86,5 +99,6 @@
         <p>❤️ Made with love by the Soundtracker Team</p>  
         <!-- </div>         -->
     </div>
+>>>>>>> develop
 </footer>
 </html>
