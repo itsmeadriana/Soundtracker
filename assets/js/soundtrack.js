@@ -85,6 +85,7 @@ generatePageElements = function(movieId) {
             var trackImg = $("<img>")
             .width(171)
             .height(228)
+            .addClass("track-image")
 
             var trackInfo = $("<ul>")
              
