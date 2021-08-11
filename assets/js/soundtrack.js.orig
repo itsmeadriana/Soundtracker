@@ -305,7 +305,11 @@ $("#track-list").on("click",".clickText", function(event){
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
                                     "headers": {
+<<<<<<< HEAD
                                         "x-rapidapi-key": "212ed38a3msh126850d76d11ec4p12e1e8jsnb9c6aae314dc",
+=======
+                                        "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
+>>>>>>> 781a629324b3b0c562c97cf31f7d840b5d42db61
                                         "x-rapidapi-host": "youtube-search-results.p.rapidapi.com"
                                     }
                                     })
