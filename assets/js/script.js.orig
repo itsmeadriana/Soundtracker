@@ -48,6 +48,8 @@ createMovieList = function (movieTitle) {
                                     )
                                     .addClass("title is-6")
 
+
+
                                 let cardImage = $("<div>")
                                     .width(225)
                                     .addClass("imagewrapper")
@@ -55,6 +57,7 @@ createMovieList = function (movieTitle) {
 
                                 let cardContent = $("<div>")
                                     .width(225)
+
                                     .addClass("card-content")
                                     .append(movieDetails);
 
@@ -110,22 +113,7 @@ function hideModal() {
 function submitSearch(event) {
     event.preventDefault();
     let currentMovieTitle = $("#movie-title-input").val().trim();
-    if (currentMovieTitle === "") {
-        console.log("nothing");
-        // show modal
-        let modalEl = $(".modal")
-            .addClass("is-active");
-    }
-    else {
-        $("#movie-list").html("");
-        createMovieList(currentMovieTitle);
-        $("#movie-title-input").val("");
-        $("#movie-title-input").val("");
-        $("header").css("display", "block")
-        $(".is-fixed-top").css("display", "block")
-        $(".container").css("display", "block") 
-    
-    }
+<<<<<<< HEAD
     createMovieList(currentMovieTitle);
     $("#movie-title-input").val("");
     $("navbar").removeClass("box")
@@ -138,5 +126,22 @@ function submitSearch(event) {
     $(".container").css("display", "block")
 
 }
-// createMovieList("moana");
+);
 
+createMovieList("Moana");
+
+=======
+    if (currentMovieTitle === "") {
+        console.log("nothing");
+        // show modal
+        let modalEl = $(".modal")
+            .addClass("is-active");
+    }
+    else {
+        $("#movie-list").html("");
+        createMovieList(currentMovieTitle);
+        $("#movie-title-input").val("");
+    }
+}
+// createMovieList("moana");
+>>>>>>> develop

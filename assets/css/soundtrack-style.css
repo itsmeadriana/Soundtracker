@@ -107,7 +107,7 @@ body {
 
 .card {
    margin: 0;
-   display:inline-block
+   display:inline-block;
 
 }
 
@@ -117,8 +117,13 @@ body {
 }
 
 .column {
-    margin:20px;
+    margin:10px;
+    width: 100%;
+    display: inline-block;
+}
 
+.auto-col {
+    width: fit-content;
 }
 
 .column-title {
@@ -137,7 +142,17 @@ body {
     align-items: center;
 }
 
-.track-list-accordion, #track-list {
+.clickText {
+    text-decoration-line: underline;
+    /* text-decoration-style: dotted var(--accent-color-4) 1px; */
+}
+
+.clickText:hover {
+    font-size: larger;
+    cursor: pointer;
+}
+
+.track-list, #track-list {
     /* background-color: #C89399; */
     line-height: 2;
     border: dotted 1px #c99420;
@@ -152,6 +167,13 @@ body {
 header h1 a {
     text-decoration: none !important;
     color: inherit !important;
+}
+
+.track-image {
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    
 }
 
 /* these are here for troubleshooting purposes */
