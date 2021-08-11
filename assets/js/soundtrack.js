@@ -144,7 +144,7 @@ generatePageElements = function(movieId) {
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
                                     "headers": {
-                                        "x-rapidapi-key": "1882bd1ab5msh32b4cf8fc04add7p10f56bjsn503b97610e23",
+                                        "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
                                         "x-rapidapi-host": "youtube-search-results.p.rapidapi.com"
                                     }
                                     })
@@ -181,6 +181,7 @@ generatePageElements = function(movieId) {
 
 // This is what happens when you click on the Track title
 $("#track-list").on("click",".clickText", function(event){
+    console.log("something")
     event.preventDefault();
     let currentTextDiv = $(this);
 
