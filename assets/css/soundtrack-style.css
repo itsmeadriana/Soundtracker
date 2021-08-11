@@ -116,12 +116,13 @@ body {
 }
 
 .column {
-    margin:20px;
+    margin:10px;
     width: 100%;
+    display: inline-block;
 }
 
 .auto-col {
-    width: fit-content
+    width: fit-content;
 }
 
 .column-title {
