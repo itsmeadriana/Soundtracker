@@ -40,39 +40,41 @@
             <div class="column"></div>
         </div>
     </section>
-<!--adrianas work-->
-
-<!-- <navbar class="is-fixed-top">
     
-    <form class="nav-search-bar">
-        <label for="movie-title-input">search for a movie:</label>
-        <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
-        <button type="button" id="submit-button">search</button>
-    </form>
-</navbar> -->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content notification" id="error-message">
+            <p>Error! Search results not found. Please try again.</p>
+          <!-- Any other Bulma elements you want -->
+        </div>
+        <button class="modal-close is-large" id="modal-close" aria-label="close"></button>
+      </div>
 
-<div class="container">
-    <!-- section for "search results" heading -->
-    <section class="search-results">
-        <h2 id="results-header">
-            search results
-        </h2>
-    </section>
+    <div class="container">
+        <!-- section for "search results" heading -->
+        <section class="search-results">
+            <h2 id="results-header">
+                search results
+            </h2>
+        </section>
 
-    <!--section for the movie list -->
-    <section class="return-results" id="list">
-    </section>
+        <!--section for the movie list -->
+        <section class="return-results" id="list">
+        </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./assets/js/remote-script-with-changes"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="./assets/js/script.js"></script>
 
-</div>
+    </div>
 </body>
-<footer class="footer is-fixed-bottom has-background-white">
-    <section>
-        <h6 >&copy Copyright Soundtracker 2021</h6>
-        <br>
-        <h6>Made with love by the Soundtracker Team</h6>
-    </section>
+<footer class="footer is-fixed-bottom">
+    <div class="columns pink">
+        <div  class="column">
+          <p>&copy Copyright Soundtracker 2021<p>
+        <!-- </div>
+        <div class="column"> -->
+        <p>❤️ Made with love by the Soundtracker Team</p>  
+        </div>        
+    </div>
 </footer>
 </html>
