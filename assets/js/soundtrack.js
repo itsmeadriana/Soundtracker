@@ -87,6 +87,7 @@ generatePageElements = function(movieId) {
             var trackImg = $("<img>")
             .width(171)
             .height(228)
+            .addClass("track-image")
 
             var trackInfo = $("<ul>")
              
@@ -197,6 +198,7 @@ generatePageElements = function(movieId) {
 
 // This is what happens when you click on the Track title
 $("#track-list").on("click",".clickText", function(event){
+    console.log("something")
     event.preventDefault();
     let currentTextDiv = $(this);
 
