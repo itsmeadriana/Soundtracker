@@ -109,3 +109,12 @@ header h1 a {
     border: 1px dotted #c99420; 
 }
 
+#back-button {
+    color: #4C6f73;
+    font-family: 'century gothic', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: white;
+    border-radius: 15px;
+    font-size: 1.75vw;
+    line-height: 2vw;
+    margin: 1pt;
+}
