@@ -160,7 +160,7 @@ generatePageElements = function(movieId) {
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
                                     "headers": {
-                                        "x-rapidapi-key": "6212ed38a3msh126850d76d11ec4p12e1e8jsnb9c6aae314dc",
+                                        "x-rapidapi-key": "80c87afd0fmsh9221895f360f229p1df07cjsn6fb127743d64",
                                         "x-rapidapi-host": "youtube-search-results.p.rapidapi.com"
                                     }
                                     })
@@ -308,7 +308,7 @@ $("#track-list").on("click",".clickText", function(event){
                                     fetch("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=" + searchTermWeird, {
                                     "method": "GET",
                                     "headers": {
-                                        "x-rapidapi-key": "6212ed38a3msh126850d76d11ec4p12e1e8jsnb9c6aae314dc",
+                                        "x-rapidapi-key": "80c87afd0fmsh9221895f360f229p1df07cjsn6fb127743d64",
                                         "x-rapidapi-host": "youtube-search-results.p.rapidapi.com"
                                     }
                                     })
