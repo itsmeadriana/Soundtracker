@@ -332,6 +332,7 @@ $("#track-list").on("click",".clickText", function(event){
                                             "</li>" +
                                             "<li>" + songLyrics + "</li>"
                                         );
+                                        $("#video-lyrics").append(videoLink, songLyrics);
                                     })
                                     })
                                     .catch(err => {

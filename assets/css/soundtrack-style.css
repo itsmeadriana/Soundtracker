@@ -119,8 +119,8 @@ body {
 
 .column {
     margin:10px;
-    width: 100%;
-    display: inline-block;
+    /* width: 100%;
+    display: inline-block; */
 }
 
 .auto-col {
@@ -157,7 +157,7 @@ body {
     /* background-color: #C89399; */
     line-height: 2;
     border: dotted 1px #c99420;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .details-text {

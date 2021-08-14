@@ -15,7 +15,7 @@
 <header>
     <h1>
         <a href="./index.html">
-        soundtracker
+            soundtracker
         </a>
     </h1>
 </header>
@@ -33,7 +33,63 @@
 
     <div id="track-details"></div> -->
 
-    <div class="columns">
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification is-primary">
+                        <h3 class="column-title title is-4">
+                            Sound Tracked!
+                        </h3>
+                        <figure class="image">
+                            <img class="box" id="movie-image" src="">                            
+                        </figure>
+                        <ul class="card-content title is-5" id="movie-details"></ul>
+                    </article>
+                    <article class="tile is-child notification is-warning">
+                        <div class="card">
+                            <h4 class="column-title title is-4">
+                                Track Details
+                            </h4>
+                            <div class="card details-text" id="track-details">
+                            </div>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child notification is-info id="LinksFor1">
+                        <h3 class="column-title title is-4">
+                            Track List
+                        </h3>
+                        <div class="card track-list-accordion" id="track-list">
+                        </div>
+                        </figure>
+                    </article>
+                </div>
+            </div>
+            <!-- <div class="tile is-parent">
+                <article class="tile is-child notification is-danger">
+                    <p class="title">Wide tile</p>
+                    <p class="subtitle">Aligned with the right tile</p>
+                    <div class="content">
+                        Content
+                    </div>
+                </article>
+            </div>
+        </div> -->
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+                <div class="is-vertical">
+                    <div class="content" id="video-lyrics">
+                        <!-- Content -->
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="columns">
         <div class="column auto-col">
             <div class="card">
                 <h3 class="column-title title is-4">
@@ -64,10 +120,10 @@
             </div>
         </div>
 
-        </section>
+        </section> -->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="./assets/js/soundtrack.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/js/soundtrack.js"></script>
 </body>
 
 </html>

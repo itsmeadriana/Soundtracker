@@ -127,5 +127,5 @@ function submitSearch(event) {
     }
 
 }
-// createMovieList("moana");
+createMovieList("moana");
 
