@@ -25,7 +25,7 @@ header {
 header h1 {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-content: space-around;
     font-size: 10vw;
     margin-right: 10px;
@@ -60,7 +60,7 @@ navbar {
     border-radius: 5px;
     line-height: 3vw;
 }
-.button, #submit-button {
+.button, #submit-button, #back-button {
     color: #4C6f73;
     font-family: 'century gothic', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: white;

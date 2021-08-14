@@ -64,7 +64,7 @@ createMovieList = function (movieTitle) {
 
                                 let linkToSoundtrack = $("<a>")
                                     .addClass("link")
-                                    .attr("href", "./soundtrack.html?movie=" + titleData.results[i].id)
+                                    .attr("href", "./soundtrack.html?movieID=" + titleData.results[i].id + "=movieTitle=" + movieTitle)
                                     .append(resultsCard);
 
                                 let movieContainerEl = $("<div>")
@@ -127,5 +127,22 @@ function submitSearch(event) {
     }
 
 }
-// createMovieList("moana");
+
+// retrieve the movie if the back button was used and generate elements
+getTitle = function (){
+    var queryString = document.location.search;
+    let movieName = queryString.split("=")[1];
+    if(movieName){
+        movieName = movieName.replaceAll("%20"," ");
+        console.log(movieName);    
+        debugger;
+        createMovieList(movieName);
+        $("header").css("display", "block")
+        $(".is-fixed-top").css("display", "block")
+        $(".container").css("display", "block") 
+  
+    }
+}
+
+getTitle();
 

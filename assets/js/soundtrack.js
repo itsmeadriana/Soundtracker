@@ -1,4 +1,5 @@
 let movieId = "";
+let movieTitle = "";
 let searchTermSpace = "";
 let searchTermWeird = "";
 let artistLyrics = "";
@@ -14,6 +15,8 @@ var getMovieId = function () {
   var tempSplit = queryString.split("=")[1];
   movieId = tempSplit.split("/")[2];
   generatePageElements(movieId);
+  movieTitle = queryString.split("=")[3];
+  console.log(movieTitle);
 };
 
 generatePageElements = function(movieId) {
@@ -349,3 +352,9 @@ $("#track-list").on("click",".clickText", function(event){
 
 //calls function to retrieve ID and then starts page generator
 getMovieId();
+
+//back button takes back to index with movie title searched
+$("#back-button").on("click",function(event)
+{event.preventDefault();
+    window.location.href = "./index.html?movie=" + movieTitle;
+});
