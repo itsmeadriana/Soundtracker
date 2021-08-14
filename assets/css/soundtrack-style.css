@@ -94,7 +94,7 @@ body {
 
 .details-text {
     text-align: center;
-    font-family: 'artographie','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'poiret','Arial Narrow', Arial, sans-serif;
 }
 
 header h1 a {
@@ -108,5 +108,4 @@ header h1 a {
     margin: 10px;
     border: 1px dotted #c99420; 
 }
-
 
