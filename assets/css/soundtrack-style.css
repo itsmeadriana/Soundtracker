@@ -24,7 +24,7 @@ header {
 
 header h1 {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-content: space-around;
     font-size: 10vw;
@@ -118,3 +118,57 @@ header h1 a {
     line-height: 2vw;
     margin: 1pt;
 }
+
+@media only screen and (max-width: 600px) {
+    header h1 {
+        font-size: 15vw;
+        line-height: 15vw;
+    }
+    header h1 a {
+        margin:10px;
+    }
+    
+    div .columns {
+        align-content: center;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    header h1 {
+        font-size: 12.5vw;
+        line-height: 12.5vw;
+    }
+
+    header h1 a {
+        margin: 10px;
+    }
+
+    .column {
+        margin: 17px;
+    }
+  }
+
+@media only screen and (max-width: 1024px) {
+    header {
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+    
+    body {
+        justify-content: space-around;
+    }
+
+    .column {
+        margin: 5px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    header h1 a {
+        margin: 10px;
+    }
+
+    body {
+      justify-self: space-evenly;
+    }
+  }
