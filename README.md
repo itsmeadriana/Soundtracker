@@ -1,6 +1,9 @@
 # Soundtracker
 ---
-This website allows users to search for a movie and returns its soundtrack list, as well as lyrics and a YouTube video--as available--for each track. By consolidating all of this information into one place, Soundtracker eliminates the need to use Shazam in the middle of watching a movie or to scour Google and YouTube for each song.
+# Purpose:
+
+This website allows users to search for a movie and returns its soundtrack list, as well as lyrics and a YouTube video (as available) for each track. By consolidating all of this information into one place, soundtracker eliminates the need to use Shazam in the middle of watching a movie or to scour Google and YouTube for each song.
+
 ---
 ## USER STORY:
 
