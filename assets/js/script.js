@@ -1,3 +1,14 @@
+//gets URL parameter 'movie'
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = urlParams.get('movie');
+
+// checks to see if there is a parameter for 'movie'
+if (myParam != null) {
+    // gives search bar html value of URL parameter
+    $("#movie-title-input").val(myParam);
+    submitSearch()
+}
+
 createMovieList = function (movieTitle) {
     //fetch movie info using the IMDb title/find
     fetch("https://imdb8.p.rapidapi.com/title/find?q=" + movieTitle, {
@@ -13,8 +24,6 @@ createMovieList = function (movieTitle) {
                     // saves search results to local storage
                     var searchResultsString = JSON.stringify(titleData);
                     saveSearchResults(movieTitle, searchResultsString);
-                    console.log("saveSearchResults")
-
                     displayImdbResults(movieTitle, titleData)
                 })
 
@@ -42,13 +51,15 @@ $(".modal-background").on("click", function () {
     hideModal()
 })
 
+// saves current search results to local storage
 function saveSearchResults(movieTitle, titleData) {
     localStorage.setItem(movieTitle, titleData);
 }
 
+// retrieves search results from local storage, from string to object
 function retrieveSearchResultsFromLocalStorage(movieTitle) {
     var convertResultsFromObject = JSON.parse(localStorage.getItem(movieTitle))
-    console.log("hey")
+    console.log(convertResultsFromObject);
     return convertResultsFromObject;
 }
 
@@ -59,36 +70,35 @@ function hideModal() {
 }
 // begins search on submit and checks for empty string
 function submitSearch(event) {
-    event.preventDefault();
+    if (event !== undefined) {
+        event.preventDefault();
+    }
+
     let currentMovieTitle = $("#movie-title-input").val().trim();
     if (currentMovieTitle === "") {
-        console.log("nothing");
         // show modal
-        let modalEl = $(".modal")
+        $(".modal")
             .addClass("is-active");
     }
     else {
         $("#movie-list").html("");
-        var existingResults = function () {
-            retrieveSearchResultsFromLocalStorage(currentMovieTitle)}
-    
+        var existingResults = retrieveSearchResultsFromLocalStorage(currentMovieTitle)
         if (existingResults == null) {
             createMovieList(currentMovieTitle);
         }
         else {
             displayImdbResults(currentMovieTitle, existingResults)
         }
-        
-        $("#movie-title-input").val("");
+
         $("header").css("display", "block")
         $(".is-fixed-top").css("display", "block")
         $(".container").css("display", "block")
-
     }
-
 }
 
+// refactored function to display only search results
 function displayImdbResults(movieTitle, titleData) {
+    console.log("displaying results")
     if (!titleData.results) {
         // console.log("modal error here");
         let modalEl = $(".modal")
@@ -96,17 +106,15 @@ function displayImdbResults(movieTitle, titleData) {
     } else {
         //For loop to cycle through the movie results
         for (var i = 0; i < titleData.results.length; i++) {
-
+            console.log("for loop");
             //checks to see if it has a name property, which indicates NOT a movie, so do nothing
             if (titleData.results[i].hasOwnProperty('name')) {
-
             } else {
                 // Create the elements for the verified movie
                 let movieImgEl = $("<img>")
                     .width(225)
                     .height(300)
                     .addClass("image is-centered")
-
 
                 //checks for picture content and assigns source value
                 if (titleData.results[i].hasOwnProperty('image')) {
@@ -119,7 +127,6 @@ function displayImdbResults(movieTitle, titleData) {
                     .html(
                         titleData.results[i].title + "<p>" +
                         titleData.results[i].year
-                        // + "<li> Type: " + titleData.results[i].titleType + "</li>"
                     )
                     .addClass("title is-6")
 
