@@ -349,7 +349,6 @@ $("#track-list").on("click",".clickText", function(event){
     })
 });
 
-
 //calls function to retrieve ID and then starts page generator
 getMovieId();
 
@@ -358,3 +357,7 @@ $("#back-button").on("click",function(event)
 {event.preventDefault();
     window.location.href = "./index.html?movie=" + movieTitle;
 });
+
+window.onpopstate = function() {
+    window.location.href = "./index.html?movie=" + movieTitle;
+}
