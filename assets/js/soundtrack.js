@@ -24,7 +24,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-details?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
+            "x-rapidapi-key": "c404bad697msh02e2500a2c15c69p12451ajsnb22d7285322e",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -61,7 +61,7 @@ generatePageElements = function(movieId) {
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
+            "x-rapidapi-key": "c404bad697msh02e2500a2c15c69p12451ajsnb22d7285322e",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
@@ -212,7 +212,7 @@ $("#track-list").on("click",".clickText", function(event){
     fetch("https://imdb8.p.rapidapi.com/title/get-sound-tracks?tconst=" +movieId, {
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "d464b868e4msh9d0771b8ee731f1p177ca2jsn0b2e85610ca3",
+            "x-rapidapi-key": "c404bad697msh02e2500a2c15c69p12451ajsnb22d7285322e",
             "x-rapidapi-host": "imdb8.p.rapidapi.com"
         }
     })
