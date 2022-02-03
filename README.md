@@ -27,11 +27,10 @@ This website allows users to search for a movie and returns its soundtrack list,
 
 ## Website Preview
 
-[coming soon]
+![Homepage preview](./assets/images/homepage.png)
 
-## Website:
 
-https://itsmeadriana.github.io/Project1/
+[Click Here To Use Soundtracker Now!](https://itsmeadriana.github.io/Soundtracker/)
 
 # Roles and Tasks:
 
