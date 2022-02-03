@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,47 +6,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+    </style>
     <link rel="stylesheet" href="assets/css/web fonts/art deco/stylesheet.css" type="text/css" charset="utf-8" />
-    <title>Soundtracker Search Results</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Soundtracker</title>
 </head>
-<header>
-    <h1>
-        soundtracker
-    </h1>
-</header>
-
-<navbar class="is-fixed-top">
-    <!-- search bar form -->
-    <form class="nav-search-bar">
-        <label for="movie-title-input">search for a movie:</label>
-        <input type="text" id="movie-title-input" placeholder="e.g. Rocky">
-        <button type="button" id="submit-button">search</button>
-    </form>
-</navbar>
-
-<body class="container">
-    <!-- section for "search results" heading -->
-    <section class="search-results">
-        <h2 id="results-header">
-            search results
-        </h2>
+<body>
+    <!--using bulma classes for sections and columns-->
+    <section class="section">
+        <div class="columns">
+            <div class="column"></div>
+                <main class="column">
+                    <header>
+                        <h1 class="is-justify-content-center-mobile">soundtracker</h1>
+                    </header>
+                    <navbar class="box">
+                        <!--Search form-->    
+                        <form id="search-form">
+                            <div class="field">
+                                <label class="label subtitle is-4" for="movie-title-input">search for a movie:</label>
+                                <div class="control">
+                                    <input class="input is-primary is-large" type="text" id="movie-title-input" placeholder="e.g. Cinderella">
+                                </div>
+                            </div>
+                            <div class="control">
+                                <button class="button is-primary is-light is-medium" type="button" id="submit-button">search</button>
+                            </div>
+                        </form>
+                    </navbar>
+                </main>
+            <div class="column"></div>
+        </div>
     </section>
 
-    <!--section for the movie list -->
-    <section class="return-results" id="list">
-    </section>
+    <!--error modal-->
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content notification" id="error-message">
+            <p>Error! Search results not found. Please try again.</p>
+        </div>
+        <button class="modal-close is-large" id="modal-close" aria-label="close"></button>
+      </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <!--to appear only after pressing search button-->
+    <div class="container">
+        <!-- section for "search results" heading -->
+        <section class="search-results">
+            <h2 id="results-header">
+                search results
+            </h2>
+        </section>
 
+        <!--section for the movie list -->
+        <section class="return-results" id="movie-list">
+        </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+
+    </div>
 </body>
-<footer class="is-fixed-bottom">
-    <section>
-        <h6 >&copy Copyright Soundtracker 2021</h6>
-        <br>
-        <h6>Made with love by the Soundtracker Team</h6>
-    </section>
+<footer class="footer is-fixed-bottom">
+    <div class="card-content">
+        <p>&copy Copyright Soundtracker 2021<p>
+        <p>❤️ Made with love by the Soundtracker Team</p>  
+    </div>
 </footer>
 </html>
