@@ -22,15 +22,13 @@ This website allows users to search for a movie and returns its soundtrack list,
 
 ## How to Use
 
-1. See the live website here: https://itsmeadriana.github.io/Project1/
+1. See the live website here: https://itsmeadriana.github.io/Soundtracker/
 2. Alternatively, you may clone this repo, download the .zip file, and open "index.html" in your favorite browser!
 
 ## Website Preview
 
 ![Homepage preview](./assets/images/homepage.png)
 
-
-[Click Here To Use Soundtracker Now!](https://itsmeadriana.github.io/Soundtracker/)
 
 # Roles and Tasks:
 
